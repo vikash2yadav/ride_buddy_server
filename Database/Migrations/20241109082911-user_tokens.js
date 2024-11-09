@@ -15,7 +15,8 @@ module.exports = {
       },
       user_id: {
         allowNull: false,
-        type: Sequelize.BIGINT(20)
+        type: Sequelize.BIGINT(20).UNSIGNED,
+        references: { model: "users", key: "id" },
       },
       expires_in: {
         allowNull: true,

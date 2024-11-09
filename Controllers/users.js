@@ -52,6 +52,12 @@ class userController {
     let response = await userModel.getProfile(req?.userInfo);
     res.handler.success(response);
   }
+
+  // update 
+  async update(req, res){
+    let response = await userModel.update(req?.userInfo, req?.body);
+    res.handler.success(response);
+  }
 }
 
 module.exports = userController;

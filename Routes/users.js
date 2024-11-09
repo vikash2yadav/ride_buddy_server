@@ -9,8 +9,8 @@ router.route('/sign-in').post(userController.signIn);
 
 router.route('/profile').get(Authentication.userAuth, userController.getProfile);
 
-router.put('/:id');
+router.route('/update').put(Authentication.userAuth, userController.update);
 
-router.delete('/:id');
+router.route('/:id');
 
 module.exports = router;

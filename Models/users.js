@@ -1,18 +1,35 @@
 const jwt = require("jsonwebtoken");
 const { STATUS_CODES, STATUS_MESSAGES, STATUS } = require("../Config/constant");
-const { users: userSchema, user_tokens: userTokenSchema } = require("../Database/Schema");
+const {
+  users: userSchema,
+  user_tokens: userTokenSchema,
+} = require("../Database/Schema");
 const bcrypt = require("bcrypt");
-const { where } = require("sequelize");
 
 class userModel {
-
   //Get User Info
-  async getUserInfo(access_token){
-    return  await userTokenSchema.findOne({
+  async getUserInfo(access_token) {
+    return await userTokenSchema.findOne({
       where: {
-        access_token
-      }
-    })
+        access_token,
+      },
+      attributes: ["access_token"],
+      include: {
+        model: userSchema,
+        where: {
+          is_delete: false,
+          status: 'active'
+        },
+        attributes: [
+          "id",
+          "fullname",
+          "username",
+          "role",
+          "license_number",
+          "last_login",
+        ],
+      },
+    });
   }
 
   // Sign Up
@@ -129,27 +146,50 @@ class userModel {
       };
     }
 
-    let access_token = await jwt.sign({id: checkUser?.id}, process.env.SECRET_KEY, {expiresIn: "1d"});
+    let access_token = await jwt.sign(
+      { id: checkUser?.id },
+      process.env.SECRET_KEY,
+      { expiresIn: "1d" }
+    );
 
     await userTokenSchema.create({
       access_token,
-      user_id: checkUser?.id
+      user_id: checkUser?.id,
     });
 
-    await userSchema.update({last_login: currentTime}, {
+    await userSchema.update(
+      { last_login: currentTime },
+      {
+        where: {
+          id: checkUser?.id,
+        },
+      }
+    );
+
+    return {
+      status: STATUS_CODES.SUCCESS,
+    };
+  }
+
+  // Get profile
+  async getProfile(userInfo) {
+    return await userSchema.findOne({
       where: {
-        id: checkUser?.id
+        id: userInfo?.id,
+      },
+    });
+  }
+
+  async update(userInfo, bodyData){
+    let response = await userSchema.update(bodyData, {
+      where: {
+        id: userInfo?.id
       }
     });
 
     return {
       status: STATUS_CODES.SUCCESS
-    };
-  }
-
-  // Get profile
-  async getProfile(userInfo){
-    return userInfo
+    }
   }
 }
 
