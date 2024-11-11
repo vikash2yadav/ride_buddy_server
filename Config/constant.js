@@ -41,6 +41,7 @@ exports.STATUS_MESSAGES = {
   REGISTER_SUCCESS: "You have successfully signed up.",
   LOGIN_SUCCESS: "You have successfully logged in.",
   OTP_SUCCESS: "Otp sent successfully.",
+  OTP_MATCHED: "Otp matched successfully.",
   IMAGE_SUCCESS: "Your image has been successfully saved.",
   IMAGE_REMOVED: "Your image has been successfully removed.",
   RESET_PASSWORD_ALREADY:
@@ -56,7 +57,9 @@ exports.STATUS_MESSAGES = {
     ID: "Id is not available in our system!",
     USER: "Your email address is not available in our system!",
     EMAIL: "This email is not available in our system!",
-    PHONE: "Phone number is not available in our system!"
+    PHONE: "Phone number is not available in our system!",
+    TOKEN: "Token not found!",
+    USERNAME: 'Username not found!'
   },
   PASSWORD: {
     MISMATCH: "Provided password do not match",
@@ -74,6 +77,7 @@ exports.STATUS_MESSAGES = {
     EMAIL_SENT: "Your email has been sent successfully",
   },
   TOKEN: {
+    SENT: "We have sent reset token to your registered email",
     INVALID: "Your token is not valid.",
     EXPIRED: "Your token has been expired.",
     LOGOUT: "You have been successfully logged out.",
@@ -91,6 +95,8 @@ exports.STATUS_MESSAGES = {
     LOGIN: "User Login successfully",
     DELETED: "User has been deleted successfully.",
     UPDATED: "User has been updated successfully.",
+    NOW_ACTIVE: "Your Account is now Active",
+    NOW_INACTIVE: "Your Account is now Inactive",
     ADDED: "User has been added successfully.",
     PROFILE_UPDATED: "Your profile has been updated successfully.",
     PROFILE_IMAGE_UPDATED: "Your profile image has been updated successfully.",
@@ -116,8 +122,8 @@ exports.STATUS_MESSAGES = {
 // Generic Status
 exports.STATUS = {
   NOTDELETED: 0,
-  INACTIVE: 0,
-  ACTIVE: 1,
+  INACTIVE: 'inactive',
+  ACTIVE: 'active',
   AVAILABLE: 1,
   NOT_AVAILABLE: 0,
   NOT_WORKING: 0,

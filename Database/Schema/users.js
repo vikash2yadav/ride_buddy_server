@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'user_id',
         onDelete: 'cascade'
       });
+      users.hasMany(models.otps, {
+        foreignKey: "user_id",
+        onDelete: "cascade",
+      });
     }
   }
   users.init(
