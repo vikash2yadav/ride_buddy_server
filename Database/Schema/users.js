@@ -9,12 +9,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       users.hasMany(models.user_tokens, {
-        foreignKey: 'user_id',
-        onDelete: 'cascade'
+        foreignKey: "user_id",
+        onDelete: "cascade",
       });
       users.hasMany(models.otps, {
         foreignKey: "user_id",
         onDelete: "cascade",
+      });
+      users.belongsTo(models.roles, {
+        foreignKey: "role_id",
+        onDelete: "cascade",
+      });
+      users.belongsTo(models.cities, {
+        foreignKey: 'city_id',
+        onDelete: 'cascade'
+      });
+      users.belongsTo(models.states, {
+        foreignKey: 'state_id',
+        onDelete: 'cascade'
       });
     }
   }
@@ -88,9 +100,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.DATEONLY,
       },
-      role: {
+      role_id: {
         allowNull: false,
-        type: DataTypes.BIGINT(20),
+        type: DataTypes.BIGINT(20).UNSIGNED,
+        references: { model: "roles", key: "id" },
       },
       profile: {
         allowNull: false,
@@ -132,17 +145,15 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.STRING(20),
       },
-      city: {
+      city_id: {
         allowNull: false,
-        type: DataTypes.BIGINT(20),
+        type: DataTypes.BIGINT(20).UNSIGNED,
+        references: { model: "cities", key: "id" },
       },
-      state: {
+      state_id: {
         allowNull: false,
-        type: DataTypes.BIGINT(20),
-      },
-      country: {
-        allowNull: false,
-        type: DataTypes.BIGINT(20),
+        type: DataTypes.BIGINT(20).UNSIGNED,
+        references: { model: "states", key: "id" },
       },
       is_verified: {
         allowNull: false,
