@@ -21,8 +21,8 @@ class Authentication {
     }
 
     req.userInfo = userToken
-      ? userToken
-        ? userToken["dataValues"]
+      ? userToken?.user
+        ? userToken?.user["dataValues"]
         : null
       : null;
     next();
