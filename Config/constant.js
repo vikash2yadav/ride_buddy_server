@@ -61,7 +61,7 @@ exports.STATUS_MESSAGES = {
     PHONE: "Phone number is not available in our system!",
     TOKEN: "Token not found!",
     USERNAME: "Username not found!",
-    ROLE: 'Role not found!'
+    ROLE: "Role not found!",
   },
   PASSWORD: {
     MISMATCH: "Provided password do not match",
@@ -126,16 +126,24 @@ exports.STATUS_MESSAGES = {
   },
 };
 
+// Role
+exports.ROLES = {
+  SUPER_ADMIN: 1,
+  ADMIN: 2,
+  RIDESHARE: 3,
+  CUSTOMER: 4,
+};
+
 // Generic Status
 exports.STATUS = {
-  NOTDELETED: 0,
+  NOTDELETED: false,
   INACTIVE: "inactive",
   ACTIVE: "active",
   AVAILABLE: 1,
   NOT_AVAILABLE: 0,
   NOT_WORKING: 0,
   ASSIGNED: 3,
-  DELETED: 1,
+  DELETED: true,
   APPROVE: 3,
   REJECTED: 4,
   COMPLETED: 5,

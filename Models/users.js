@@ -27,7 +27,7 @@ class userModel {
           "id",
           "fullname",
           "username",
-          "role",
+          "role_id",
           "license_number",
           "last_login",
         ],
