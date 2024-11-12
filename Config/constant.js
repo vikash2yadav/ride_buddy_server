@@ -51,7 +51,8 @@ exports.STATUS_MESSAGES = {
     USER: "User already exist!",
     EMAIL: "Email is already registered!",
     PHONE: "Phone number is already exist!",
-    USERNAME: "Username is already exist!"
+    USERNAME: "Username is already exist!",
+    ROLE: "Role is already exist!",
   },
   NOT_FOUND: {
     ID: "Id is not available in our system!",
@@ -59,7 +60,8 @@ exports.STATUS_MESSAGES = {
     EMAIL: "This email is not available in our system!",
     PHONE: "Phone number is not available in our system!",
     TOKEN: "Token not found!",
-    USERNAME: 'Username not found!'
+    USERNAME: "Username not found!",
+    ROLE: "Role not found!",
   },
   PASSWORD: {
     MISMATCH: "Provided password do not match",
@@ -75,6 +77,11 @@ exports.STATUS_MESSAGES = {
   },
   CONTACT_US_PROCESS: {
     EMAIL_SENT: "Your email has been sent successfully",
+  },
+  ROLE: {
+    ADDED: "Role added successfully!",
+    UPDATED: "Role updated successfully!",
+    DELETED: "Role deleted successfully!",
   },
   TOKEN: {
     SENT: "We have sent reset token to your registered email",
@@ -119,16 +126,24 @@ exports.STATUS_MESSAGES = {
   },
 };
 
+// Role
+exports.ROLES = {
+  SUPER_ADMIN: 1,
+  ADMIN: 2,
+  RIDESHARE: 3,
+  CUSTOMER: 4,
+};
+
 // Generic Status
 exports.STATUS = {
-  NOTDELETED: 0,
-  INACTIVE: 'inactive',
-  ACTIVE: 'active',
+  NOTDELETED: false,
+  INACTIVE: "inactive",
+  ACTIVE: "active",
   AVAILABLE: 1,
   NOT_AVAILABLE: 0,
   NOT_WORKING: 0,
   ASSIGNED: 3,
-  DELETED: 1,
+  DELETED: true,
   APPROVE: 3,
   REJECTED: 4,
   COMPLETED: 5,

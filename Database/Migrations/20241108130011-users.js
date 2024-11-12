@@ -41,9 +41,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATEONLY,
       },
-      role: {
+      role_id: {
         allowNull: false,
-        type: Sequelize.BIGINT(20),
+        type: Sequelize.BIGINT(20).UNSIGNED,
+        references: { model: "roles", key: "id" },
       },
       profile: {
         allowNull: false,
@@ -85,17 +86,15 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(20),
       },
-      city: {
+      city_id: {
         allowNull: false,
-        type: Sequelize.BIGINT(20),
+        type: Sequelize.BIGINT(20).UNSIGNED,
+        references: { model: "cities", key: "id" },
       },
-      state: {
+      state_id: {
         allowNull: false,
-        type: Sequelize.BIGINT(20),
-      },
-      country: {
-        allowNull: false,
-        type: Sequelize.BIGINT(20),
+        type: Sequelize.BIGINT(20).UNSIGNED,
+        references: { model: "states", key: "id" },
       },
       is_verified: {
         allowNull: false,
