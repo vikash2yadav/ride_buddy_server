@@ -53,6 +53,8 @@ exports.STATUS_MESSAGES = {
     PHONE: "Phone number is already exist!",
     USERNAME: "Username is already exist!",
     ROLE: "Role is already exist!",
+    ORDER: 'Order is already exist!',
+    REVIEW: 'Review is already exist!'
   },
   NOT_FOUND: {
     ID: "Id is not available in our system!",
@@ -62,6 +64,11 @@ exports.STATUS_MESSAGES = {
     TOKEN: "Token not found!",
     USERNAME: "Username not found!",
     ROLE: "Role not found!",
+    ORDER: "Order not fount!",
+    REVIEW: 'Review not found!',
+    BOOKING: 'Booking not found!',
+    PAYMENT: 'Payment not found!',
+    NOTIFICATION: 'Notification not found!'
   },
   PASSWORD: {
     MISMATCH: "Provided password do not match",
@@ -112,6 +119,33 @@ exports.STATUS_MESSAGES = {
     INACTIVE: "Your email address is not active.",
     INVALID: "Please enter valid email & password.",
   },
+  ORDER: {
+    ADDED: 'Order added successfully!',
+    UPDATED: 'Order updated successfully!',
+    DELETED: 'Order deleted successfully!',
+    CANCELLED: 'Order is cancelled, now you can`t change order details.',
+    COMPLETED: 'Order is completed, now you can`t change order details.'
+  },
+  REVIEW: {
+    ADDED: 'Review added successfully!',
+    UPDATED: 'Review updated successfully!',
+    DELETED: 'Review deleted successfully!',
+  },
+  BOOKING: {
+    ADDED: 'Booking added successfully!',
+    UPDATED: 'Booking updated successfully!',
+    DELETED: 'Booking deleted successfully!',
+  },
+  PAYMENT: {
+    ADDED: 'Payment added successfully!',
+    UPDATED: 'Payment updated successfully!',
+    DELETED: 'Payment deleted successfully!',
+  },
+  NOTIFICATION: {
+    ADDED: 'Notification added successfully!',
+    UPDATED: 'Notification updated successfully!',
+    DELETED: 'Notification deleted successfully!',
+  },
   VALIDATION: {
     REQUIRED: {
       PASSWORD: "Please enter password.",
@@ -139,6 +173,11 @@ exports.STATUS = {
   NOTDELETED: false,
   INACTIVE: "inactive",
   ACTIVE: "active",
+  PENDING: 'pending',
+  CANCELLED: 'cancelled',
+  COMPLETED: 'completed',
+  REJECTED: 'rejected',
+  APPROVED: 'approved',
   AVAILABLE: 1,
   NOT_AVAILABLE: 0,
   NOT_WORKING: 0,

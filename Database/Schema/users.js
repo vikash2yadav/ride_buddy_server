@@ -28,6 +28,26 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'state_id',
         onDelete: 'cascade'
       });
+      users.hasMany(models.vehicles, {
+        foreignKey: "owner_id",
+        onDelete: 'cascade'
+      });
+      users.hasMany(models.vehicles, {
+        foreignKey: "added_by",
+        onDelete: 'cascade'
+      });
+      users.hasMany(models.orders, {
+        foreignKey: 'order_id',
+        onDelete: 'cascade'
+      });
+      users.hasMany(models.reviews, {
+        foreignKey: 'user_id',
+        onDelete: 'cascade'
+      });
+      users.hasMany(models.bookings, {
+        foreignKey: 'user_id',
+        onDelete: 'cascade'
+      });
     }
   }
   users.init(

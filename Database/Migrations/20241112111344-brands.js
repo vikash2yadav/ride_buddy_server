@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("cities", {
+    await queryInterface.createTable("brands", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,15 +13,35 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(255),
       },
-      state_id: {
+      logo_url: {
+        allowNull: true,
+        type: Sequelize.STRING(255),
+      },
+      country_of_origin: {
         allowNull: false,
-        type: Sequelize.BIGINT(20).UNSIGNED,
-        references: { model: "states", key: "id" },
+        type: Sequelize.STRING(100),
+      },
+      founded_year: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
+      description: {
+        allowNull: true,
+        type: Sequelize.TEXT,
+      },
+      website_url: {
+        allowNull: true,
+        type: Sequelize.STRING(255),
       },
       status: {
         allowNull: false,
         type: Sequelize.ENUM("active", "inactive"),
         defaultValue: "active",
+      },
+      is_delete: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +54,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("cities");
+    await queryInterface.dropTable("brands");
   },
 };

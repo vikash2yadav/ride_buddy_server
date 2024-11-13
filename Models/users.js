@@ -4,6 +4,9 @@ const {
   users: userSchema,
   user_tokens: userTokenSchema,
   otps: otpSchema,
+  roles: roleSchema,
+  cities: citySchema,
+  states: stateSchema
 } = require("../Database/Schema");
 const bcrypt = require("bcrypt");
 const { generateOtp } = require("../Utils/helper");
@@ -180,6 +183,18 @@ class userModel {
       where: {
         id: userInfo?.id,
       },
+      include: [{
+        model: roleSchema,
+        attributes: ['name']
+      },
+      {
+        model: citySchema,
+        attributes: ['name']
+      },
+      {
+        model: stateSchema,
+        attributes: ['name']
+      }]
     });
   }
 
