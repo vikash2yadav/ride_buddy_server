@@ -2,26 +2,35 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("cities", {
+    await queryInterface.createTable("vehicle_images", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.BIGINT(20).UNSIGNED,
       },
-      name: {
-        allowNull: false,
-        type: Sequelize.STRING(255),
-      },
-      state_id: {
+      vehicle_id: {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED,
-        references: { model: "states", key: "id" },
+        references: {
+          model: "vehicles",
+          key: "id",
+        },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       },
-      status: {
+      image_url: {
         allowNull: false,
-        type: Sequelize.ENUM("active", "inactive"),
-        defaultValue: "active",
+        type: Sequelize.TEXT,
+      },
+      image_type: {
+        allowNull: false,
+        type: Sequelize.STRING(100),
+      },
+      is_primary: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +43,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("cities");
+    await queryInterface.dropTable("vehicle_images");
   },
 };

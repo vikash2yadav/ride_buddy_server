@@ -10,7 +10,18 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      orders.belongsTo(models.users, {
+        foreignKey: 'user_id',
+        onDelete: 'cascade'
+      });
+      orders.belongsTo(models.vehicles, {
+        foreignKey: 'vehicle_id',
+        onDelete: 'cascade'
+      });
+      orders.belongsTo(models.orderDetails, {
+        foreignKey: 'order_detail_id',
+        onDelete: 'cascade'
+      });
     }
   }
   orders.init({
@@ -39,6 +50,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
+    },
+    order_detail_id: {
+      allowNull: false,
+      type: DataTypes.BIGINT(20).UNSIGNED,
+      references: {model: 'orderDetails', key: 'id'}
     },
     rental_start: {
       allowNull: false,
@@ -106,10 +122,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
     },
     pickup_location: {
-      allowNull: true,
-      type: DataTypes.TEXT,
-    },
-    customer_notes: {
       allowNull: true,
       type: DataTypes.TEXT,
     },

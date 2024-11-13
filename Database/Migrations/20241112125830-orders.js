@@ -29,6 +29,11 @@ module.exports = {
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       },
+      order_detail_id: {
+        allowNull: false,
+        type: Sequelize.BIGINT(20).UNSIGNED,
+        references: {model: 'orderDetails', key: 'id'}
+      },
       rental_start: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -95,10 +100,6 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       pickup_location: {
-        allowNull: true,
-        type: Sequelize.TEXT,
-      },
-      customer_notes: {
         allowNull: true,
         type: Sequelize.TEXT,
       },

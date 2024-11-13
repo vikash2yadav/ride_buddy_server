@@ -3,58 +3,55 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class brands extends Model {
+  class payments extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      brands.hasMany(models.vehicles, {
-        foreignKey: "brand_id",
-        onDelete: 'cascade'
-      });
-      brands.hasMany(models.modells, {
-        foreignKey: 'brand_id',
+      payments.belongsTo(models.bookings, {
+        foreignKey: 'booking_id',
         onDelete: 'cascade'
       });
     }
   }
-  brands.init({
+  payments.init({
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.BIGINT(20).UNSIGNED,
     },
-    name: {
+    booking_id: {
       allowNull: false,
-      type: DataTypes.STRING(255),
+      type: DataTypes.BIGINT(20).UNSIGNED,
     },
-    logo_url: {
-      allowNull: true,
-      type: DataTypes.STRING(255),
-    },
-    country_of_origin: {
+    payment_amount: {
       allowNull: false,
-      type: DataTypes.STRING(100),
+      type: DataTypes.DECIMAL(20, 2),
     },
-    founded_year: {
-      allowNull: true,
-      type: DataTypes.INTEGER,
+    payment_method: {
+      allowNull: false,
+      type: DataTypes.ENUM("credit_card", "debit_card", "paypal", "cash"),
     },
-    description: {
-      allowNull: true,
-      type: DataTypes.TEXT,
+    payment_status: {
+      type: DataTypes.ENUM("pending", "completed", "failed", "refunded"),
+      allowNull: false,
+      defaultValue: "pending",
     },
-    website_url: {
+    payment_date: {
+      allowNull: false,
+      type: DataTypes.DATE,
+    },
+    transaction_id: {
       allowNull: true,
       type: DataTypes.STRING(255),
+      unique: true,
     },
-    status: {
-      allowNull: false,
-      type: DataTypes.ENUM("active", "inactive"),
-      defaultValue: "active",
+    payment_gateway: {
+      allowNull: true,
+      type: DataTypes.STRING(255),
     },
     is_delete: {
       allowNull: false,
@@ -71,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'brands',
+    modelName: 'payments',
   });
-  return brands;
+  return payments;
 };

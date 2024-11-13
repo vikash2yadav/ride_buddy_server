@@ -2,41 +2,37 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("brands", {
+    await queryInterface.createTable("notifications", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.BIGINT(20).UNSIGNED,
       },
-      name: {
+      user_id: {
+        type: Sequelize.BIGINT(20).UNSIGNED,
         allowNull: false,
-        type: Sequelize.STRING(255),
+        references: {
+          model: "users",
+          key: "user_id",
+        },
       },
-      logo_url: {
-        allowNull: true,
-        type: Sequelize.STRING(255),
-      },
-      country_of_origin: {
+      message: {
         allowNull: false,
-        type: Sequelize.STRING(100),
-      },
-      founded_year: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-      },
-      description: {
-        allowNull: true,
         type: Sequelize.TEXT,
       },
-      website_url: {
-        allowNull: true,
-        type: Sequelize.STRING(255),
+      notification_type: {
+        allowNull: false,
+        type: Sequelize.ENUM("bookings", "payments"),
+      },
+      sent_time: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
       status: {
         allowNull: false,
-        type: Sequelize.ENUM("active", "inactive"),
-        defaultValue: "active",
+        type: Sequelize.ENUM("unread", "read", "archived"),
+        defaultValue: "unread",
       },
       is_delete: {
         allowNull: false,
@@ -54,6 +50,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("brands");
+    await queryInterface.dropTable("notifications");
   },
 };

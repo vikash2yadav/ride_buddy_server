@@ -2,41 +2,42 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("brands", {
+    await queryInterface.createTable("payments", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.BIGINT(20).UNSIGNED,
       },
-      name: {
+      booking_id: {
         allowNull: false,
-        type: Sequelize.STRING(255),
+        type: Sequelize.BIGINT(20).UNSIGNED,
       },
-      logo_url: {
-        allowNull: true,
-        type: Sequelize.STRING(255),
-      },
-      country_of_origin: {
+      payment_amount: {
         allowNull: false,
-        type: Sequelize.STRING(100),
+        type: Sequelize.DECIMAL(20, 2),
       },
-      founded_year: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
+      payment_method: {
+        allowNull: false,
+        type: Sequelize.ENUM("credit_card", "debit_card", "paypal", "cash"),
       },
-      description: {
-        allowNull: true,
-        type: Sequelize.TEXT,
+      payment_status: {
+        type: Sequelize.ENUM("pending", "completed", "failed", "refunded"),
+        allowNull: false,
+        defaultValue: "pending",
       },
-      website_url: {
+      payment_date: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      transaction_id: {
         allowNull: true,
         type: Sequelize.STRING(255),
+        unique: true,
       },
-      status: {
-        allowNull: false,
-        type: Sequelize.ENUM("active", "inactive"),
-        defaultValue: "active",
+      payment_gateway: {
+        allowNull: true,
+        type: Sequelize.STRING(255),
       },
       is_delete: {
         allowNull: false,
@@ -48,12 +49,12 @@ module.exports = {
         type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: false, 
         type: Sequelize.DATE,
       },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("brands");
+    await queryInterface.dropTable("payments");
   },
 };

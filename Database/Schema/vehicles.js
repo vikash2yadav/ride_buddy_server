@@ -18,6 +18,30 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "model_id",
         onDelete: 'cascade'
       });
+      vehicles.belongsTo(models.users, {
+        foreignKey: "owner_id",
+        onDelete: 'cascade'
+      });
+      vehicles.belongsTo(models.users, {
+        foreignKey: "added_by",
+        onDelete: 'cascade'
+      });
+      vehicles.hasMany(models.orders, {
+        foreignKey: 'vehicle_id',
+        onDelete: 'cascade'
+      });
+      vehicles.hasMany(models.reviews, {
+        foreignKey: 'vehicle_id',
+        onDelete: 'cascade'
+      });
+      vehicles.hasMany(models.vehicle_images, {
+        foreignKey: 'vehicle_id',
+        onDelete: 'cascade'
+      });
+      vehicles.hasMany(models.bookings, {
+        foreignKey: 'vehicle_id',
+        onDelete: 'cascade'
+      });
     }
   }
   vehicles.init({
@@ -43,7 +67,7 @@ module.exports = (sequelize, DataTypes) => {
     model_id: {
       allowNull: false,
       type: DataTypes.BIGINT(20).UNSIGNED,
-      references: {model: 'models', key: 'id'}
+      references: {model: 'modells', key: 'id'}
     },
     year: {
       allowNull: false,
@@ -199,6 +223,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.ENUM("active", "inactive"),
       defaultValue: "active",
+    },
+    is_delete: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     createdAt: {
       allowNull: false,
