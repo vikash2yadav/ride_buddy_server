@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'user_id',
         onDelete: 'cascade'
       });
-      bookings.belongsTo(models.vahicles, {
+      bookings.belongsTo(models.vehicles, {
         foreignKey: 'vehicle_id',
         onDelete: 'cascade'
       });
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       references: {
         model: "users",
-        key: "user_id",
+        key: "id",
       },
     },
     vehicle_id: {
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       references: {
         model: "vehicles",
-        key: "vehicle_id",
+        key: "id",
       },
     },
     pickup_time: {
@@ -86,7 +86,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     is_delete: {
       allowNull: false,
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
     createdAt: {

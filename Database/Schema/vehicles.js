@@ -214,11 +214,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BIGINT(20).UNSIGNED,
       references: {model: 'users', key: 'id'}
     },
-    added_by: {
-      allowNull: false,
-      type: DataTypes.BIGINT(20).UNSIGNED,
-      references: {model: 'users', key: 'id'}
-    },
+    // added_by: {
+    //   allowNull: false,
+    //   type: DataTypes.BIGINT(20).UNSIGNED,
+    //   references: {model: 'users', key: 'id'}
+    // },
     status: {
       allowNull: false,
       type: DataTypes.ENUM("active", "inactive"),

@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: "users",
-          key: "user_id",
+          key: "id",
         },
       },
       vehicle_id: {
@@ -22,7 +22,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: "vehicles",
-          key: "vehicle_id",
+          key: "id",
         },
       },
       pickup_time: {

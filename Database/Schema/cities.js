@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "city_id",
         onDelete: "cascade",
       });
-      cities.hasMany(models.states, {
+      cities.belongsTo(models.states, {
         foreignKey: "state_id",
         onDelete: "cascade",
       });
