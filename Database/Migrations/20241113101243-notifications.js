@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: "users",
-          key: "user_id",
+          key: "id",
         },
       },
       message: {
