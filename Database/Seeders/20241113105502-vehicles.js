@@ -39,6 +39,7 @@ module.exports = {
         damage_report: null,
         condition_status: "Good",
         owner_id: 3, // Assuming owner ID 1 exists in the users table
+        added_by: 3,
         status: "active",
         is_delete: false,
         createdAt: new Date(),
@@ -79,6 +80,7 @@ module.exports = {
         damage_report: "Minor scratches on the right side.",
         condition_status: "Good",
         owner_id: 3, // Assuming owner ID 2 exists in the users table
+        added_by: 3,
         status: "active",
         is_delete: false,
         createdAt: new Date(),
@@ -119,6 +121,7 @@ module.exports = {
         damage_report: null,
         condition_status: "New",
         owner_id: 3, // Assuming owner ID 3 exists
+        added_by: 2,
         status: "active",
         is_delete: false,
         createdAt: new Date(),
@@ -159,6 +162,7 @@ module.exports = {
         damage_report: null,
         condition_status: "Good",
         owner_id: 3,
+        added_by: 4,
         status: "active",
         is_delete: false,
         createdAt: new Date(),
@@ -199,6 +203,7 @@ module.exports = {
         damage_report: "Minor dent on the front bumper.",
         condition_status: "Fair",
         owner_id: 3,
+        added_by: 3,
         status: "active",
         is_delete: false,
         createdAt: new Date(),
@@ -239,6 +244,7 @@ module.exports = {
         damage_report: null,
         condition_status: "New",
         owner_id: 3,
+        added_by: 1,
         status: "active",
         is_delete: false,
         createdAt: new Date(),

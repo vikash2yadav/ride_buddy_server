@@ -13,6 +13,8 @@ module.exports = {
         description:
           "Toyota is known for its durable and fuel-efficient cars, including models like the Corolla and Camry.",
         website_url: "https://www.toyota.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "Harley-Davidson",
@@ -23,6 +25,8 @@ module.exports = {
         description:
           "Harley-Davidson is an iconic American motorcycle manufacturer, known for its heavyweight motorcycles.",
         website_url: "https://www.harley-davidson.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "Yamaha",
@@ -33,6 +37,8 @@ module.exports = {
         description:
           "Yamaha is a leading motorcycle manufacturer known for its performance motorcycles and cruisers.",
         website_url: "https://www.yamaha-motor.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "Ducati",
@@ -43,6 +49,8 @@ module.exports = {
         description:
           "Ducati is known for its high-performance motorcycles, particularly sport bikes like the Panigale.",
         website_url: "https://www.ducati.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "BMW",
@@ -53,6 +61,8 @@ module.exports = {
         description:
           "BMW is known for luxury vehicles and sporty driving dynamics, including the 3 Series and X5.",
         website_url: "https://www.bmw.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "Honda",
@@ -63,6 +73,8 @@ module.exports = {
         description:
           "Honda is a global leader in the production of automobiles and motorcycles, known for models like Civic and Accord.",
         website_url: "https://www.honda.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "Ford",
@@ -73,6 +85,8 @@ module.exports = {
         description:
           "Ford is an American multinational automaker, known for vehicles like the Mustang and F-150.",
         website_url: "https://www.ford.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "Suzuki",
@@ -83,6 +97,8 @@ module.exports = {
         description:
           "Suzuki is a Japanese automaker known for its affordable cars, motorcycles, and all-terrain vehicles.",
         website_url: "https://www.suzuki.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "Kawasaki",
@@ -93,6 +109,8 @@ module.exports = {
         description:
           "Kawasaki is renowned for manufacturing motorcycles, including high-performance models like the Ninja.",
         website_url: "https://www.kawasaki.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "Mercedes-Benz",
@@ -103,6 +121,8 @@ module.exports = {
         description:
           "Mercedes-Benz is known for its luxury vehicles, including the S-Class and C-Class.",
         website_url: "https://www.mercedes-benz.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "Nissan",
@@ -113,6 +133,8 @@ module.exports = {
         description:
           "Nissan produces a wide range of vehicles, including sedans, SUVs, and electric cars like the Nissan Leaf.",
         website_url: "https://www.nissan-global.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: "Harley-Davidson",
@@ -123,6 +145,8 @@ module.exports = {
         description:
           "Harley-Davidson is an iconic American motorcycle manufacturer, known for its heavyweight motorcycles.",
         website_url: "https://www.harley-davidson.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ]);
   },
