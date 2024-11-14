@@ -21,32 +21,37 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "cascade",
       });
       users.belongsTo(models.cities, {
-        foreignKey: 'city_id',
-        onDelete: 'cascade'
+        foreignKey: "city_id",
+        onDelete: "cascade",
       });
       users.belongsTo(models.states, {
-        foreignKey: 'state_id',
-        onDelete: 'cascade'
+        foreignKey: "state_id",
+        onDelete: "cascade",
       });
       users.hasMany(models.vehicles, {
         foreignKey: "owner_id",
-        onDelete: 'cascade'
+        onDelete: "cascade",
       });
       users.hasMany(models.vehicles, {
         foreignKey: "added_by",
-        onDelete: 'cascade'
+        as: 'addedBy',
+        onDelete: "cascade",
       });
       users.hasMany(models.reviews, {
-        foreignKey: 'user_id',
-        onDelete: 'cascade'
+        foreignKey: "user_id",
+        onDelete: "cascade",
       });
       users.hasMany(models.bookings, {
-        foreignKey: 'user_id',
-        onDelete: 'cascade'
+        foreignKey: "user_id",
+        onDelete: "cascade",
       });
       users.hasMany(models.orders, {
-        foreignKey: 'user_id',
-        onDelete: 'cascade'
+        foreignKey: "user_id",
+        onDelete: "cascade",
+      });
+      users.hasMany(models.notifications, {
+        foreignKey: "user_id",
+        onDelete: "cascade",
       });
     }
   }

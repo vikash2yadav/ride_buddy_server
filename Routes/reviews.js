@@ -1,17 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const reviewController = new (require("../Controllers/reviews"))();
+const Authentication = new (require("../Middlewares/authentication"))();
 
-router.route("/add").post(reviewController.add);
+router.route("/add").post(Authentication.userAuth, reviewController.add);
 
-router.route("/update").put(reviewController.update);
+router.route("/update").put(Authentication.userAuth, reviewController.update);
 
 router
   .route("/delete/:id")
-  .put(reviewController.delete);
+  .put(Authentication.userAuth, reviewController.delete);
 
-router.route("/get/:id").get(reviewController.get);
+router.route("/get/:id").get(Authentication.userAuth, reviewController.get);
 
-router.route("/list").post(reviewController.list);
+router.route("/list").post(Authentication.userAuth, reviewController.list);
 
 module.exports = router;

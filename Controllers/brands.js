@@ -6,7 +6,7 @@ class brandController {
   async add(req, res) {
     let response = await brandModel.add(req?.body);
 
-    if(response.status === STATUS_CODES.ALREADY_REPORTED){
+    if (response.status === STATUS_CODES.ALREADY_REPORTED) {
       return res.handler.conflict(undefined, STATUS_MESSAGES.EXISTS.BRAND);
     }
 
@@ -17,11 +17,11 @@ class brandController {
   async update(req, res) {
     let response = await brandModel.update(req?.body);
 
-    if(response.status === STATUS_CODES.NOT_FOUND){
+    if (response.status === STATUS_CODES.NOT_FOUND) {
       return res.handler.notFound(undefined, STATUS_MESSAGES.NOT_FOUND.BRAND);
     }
 
-    if(response.status === STATUS_CODES.ALREADY_REPORTED){
+    if (response.status === STATUS_CODES.ALREADY_REPORTED) {
       return res.handler.notFound(undefined, STATUS_MESSAGES.EXISTS.BRAND);
     }
 
@@ -32,7 +32,7 @@ class brandController {
   async delete(req, res) {
     let response = await brandModel.delete(req?.params);
 
-    if(response.status === STATUS_CODES.NOT_FOUND){
+    if (response.status === STATUS_CODES.NOT_FOUND) {
       return res.handler.notFound(undefined, STATUS_MESSAGES.NOT_FOUND.BRAND);
     }
 
@@ -43,7 +43,7 @@ class brandController {
   async get(req, res) {
     let response = await brandModel.get(req?.params);
 
-    if(response.status === STATUS_CODES.NOT_FOUND){
+    if (response.status === STATUS_CODES.NOT_FOUND) {
       return res.handler.notFound(undefined, STATUS_MESSAGES.NOT_FOUND.BRAND);
     }
 

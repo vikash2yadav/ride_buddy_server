@@ -4,18 +4,14 @@ const { STATUS_CODES, STATUS_MESSAGES } = require("../Config/constant");
 class reviewController {
   // add
   async add(req, res) {
-    let response = await reviewModel.add(req?.body);
-
-    if (response.status === STATUS_CODES.ALREADY_REPORTED) {
-      return res.handler.conflict(undefined, STATUS_MESSAGES.EXISTS.REVIEW);
-    }
+    let response = await reviewModel.add(req?.userInfo, req?.body);
 
     res.handler.success(response, STATUS_MESSAGES.REVIEW.ADDED);
   }
 
   // update
   async update(req, res) {
-    let response = await reviewModel.update(req?.body);
+    let response = await reviewModel.update(req?.userInfo, req?.body);
 
     if (response.status === STATUS_CODES.NOT_FOUND) {
       return res.handler.notFound(undefined, STATUS_MESSAGES.NOT_FOUND.REVIEW);

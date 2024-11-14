@@ -5,7 +5,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class notifications extends Model {
     static associate(models) {
-      // define association here
+      notifications.belongsTo(models.users, {
+        foreignKey: 'user_id',
+        onDelete: 'cascade'
+      });
     }
   }
   notifications.init({
@@ -20,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       references: {
         model: "users",
-        key: "user_id",
+        key: "id",
       },
     },
     message: {

@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     booking_id: {
       allowNull: false,
       type: DataTypes.BIGINT(20).UNSIGNED,
+      references: {model: 'bookings', key: 'id'}
     },
     payment_amount: {
       allowNull: false,

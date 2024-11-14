@@ -41,7 +41,7 @@ class modelModel {
     let existmodel = await modelSchema.findOne({
       where: {
         name: bodyData?.name,
-        id: { [Op.ne]: bodyData?.id },
+        // id: { [Op.ne]: bodyData?.id },
       },
     });
 
@@ -115,6 +115,7 @@ class modelModel {
       },
       include: {
         model: brandSchema,
+        attributes: ["name", "logo_url", "country_of_origin", "founded_year"],
       },
     });
   }

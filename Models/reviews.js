@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { STATUS_CODES, STATUS, STATUS_MESSAGES } = require("../Config/constant");
+const { STATUS_CODES, STATUS, STATUS_MESSAGES, ROLES } = require("../Config/constant");
 const {
   reviews: reviewSchema,
   users: userSchema,
@@ -8,25 +8,22 @@ const {
 
 class reviewModel {
   // add
-  async add(bodyData) {
-    let data = await reviewSchema.findOne({
-      where: {
-        user_id: bodyData?.user_id,
-        vehicle_id: bodyData?.vehicle_id,
-      },
-    });
-
-    if (data) {
-      return {
-        status: STATUS_CODES.ALREADY_REPORTED,
-      };
+  async add(userInfo, bodyData) {
+    
+    if (
+      userInfo?.role_id === ROLES.ADMIN ||
+      userInfo?.role_id === ROLES.SUPER_ADMIN
+    ) {
+      bodyData.user_id;
+    } else {
+      bodyData.user_id = userInfo?.id;
     }
 
     return await reviewSchema.create(bodyData);
   }
 
   // update
-  async update(bodyData) {
+  async update(userInfo, bodyData) {
     let data = await reviewSchema.findOne({
       where: {
         id: bodyData?.id,
@@ -38,6 +35,15 @@ class reviewModel {
       return {
         status: STATUS_CODES.NOT_FOUND,
       };
+    }
+
+    if (
+      userInfo?.role_id === ROLES.ADMIN ||
+      userInfo?.role_id === ROLES.SUPER_ADMIN
+    ) {
+      bodyData.user_id;
+    } else {
+      bodyData.user_id = userInfo?.id;
     }
 
     return await reviewSchema.update(bodyData, {

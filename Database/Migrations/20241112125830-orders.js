@@ -103,6 +103,11 @@ module.exports = {
         allowNull: true,
         type: Sequelize.TEXT,
       },
+      is_delete: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

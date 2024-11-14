@@ -1,15 +1,24 @@
 const { Op } = require("sequelize");
-const { STATUS_CODES, STATUS } = require("../Config/constant");
-const { bookings: bookingSchema } = require("../Database/Schema");
+const { STATUS_CODES, STATUS, ROLES } = require("../Config/constant");
+const { bookings: bookingSchema, users: userSchema, vehicles: vehicleSchema } = require("../Database/Schema");
 
 class bookingModel {
   // add
-  async add(bodyData) {
+  async add(userInfo, bodyData) {
+    if (
+      userInfo?.role_id === ROLES.ADMIN ||
+      userInfo?.role_id === ROLES.SUPER_ADMIN
+    ) {
+      bodyData.user_id;
+    } else {
+      bodyData.user_id = userInfo?.id;
+    }
+
     return await bookingSchema.create(bodyData);
   }
 
   // update
-  async update(bodyData) {
+  async update(userInfo, bodyData) {
     let data = await bookingSchema.findOne({
       where: {
         id: bodyData?.id,
@@ -21,6 +30,15 @@ class bookingModel {
       return {
         status: STATUS_CODES.NOT_FOUND,
       };
+    }
+
+    if (
+      userInfo?.role_id === ROLES.ADMIN ||
+      userInfo?.role_id === ROLES.SUPER_ADMIN
+    ) {
+      bodyData.user_id = bodyData?.user_id;
+    } else {
+      bodyData.user_id = userInfo?.id;
     }
 
     return await bookingSchema.update(bodyData, {
@@ -64,6 +82,11 @@ class bookingModel {
         id: id,
         is_delete: false,
       },
+      include: [{
+        model: userSchema
+      },{
+        model: vehicleSchema
+      }]
     });
 
     if (!data) {
@@ -81,6 +104,11 @@ class bookingModel {
       where: {
         is_delete: false,
       },
+      include: [{
+        model: userSchema
+      },{
+        model: vehicleSchema
+      }]
     });
   }
 }

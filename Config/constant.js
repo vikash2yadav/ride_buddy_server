@@ -53,8 +53,11 @@ exports.STATUS_MESSAGES = {
     PHONE: "Phone number is already exist!",
     USERNAME: "Username is already exist!",
     ROLE: "Role is already exist!",
-    ORDER: 'Order is already exist!',
-    REVIEW: 'Review is already exist!'
+    ORDER: 'Order is already placed!',
+    REVIEW: 'Review is already added!',
+    BRAND: 'Brand is already registered!',
+    MODEL: 'Model is already registered!',
+    VEHICLE: 'Vehicle is already registered!'
   },
   NOT_FOUND: {
     ID: "Id is not available in our system!",
@@ -68,7 +71,10 @@ exports.STATUS_MESSAGES = {
     REVIEW: 'Review not found!',
     BOOKING: 'Booking not found!',
     PAYMENT: 'Payment not found!',
-    NOTIFICATION: 'Notification not found!'
+    NOTIFICATION: 'Notification not found!',
+    BRAND: 'Brand not found!',
+    MODEL: 'Model not found!',
+    VEHICLE: 'Vehicle not found!'
   },
   PASSWORD: {
     MISMATCH: "Provided password do not match",
@@ -145,6 +151,21 @@ exports.STATUS_MESSAGES = {
     ADDED: 'Notification added successfully!',
     UPDATED: 'Notification updated successfully!',
     DELETED: 'Notification deleted successfully!',
+  },
+  BRAND: {
+    ADDED: 'Brand added successfully!',
+    UPDATED: 'Brand updated successfully!',
+    DELETED: 'Brand deleted successfully!',
+  },
+  MODEL: {
+    ADDED: 'Model added successfully!',
+    UPDATED: 'Model updated successfully!',
+    DELETED: 'Model deleted successfully!',
+  },
+  VEHICLE: {
+    ADDED: 'Vehicle registered!',
+    UPDATED: 'Vehicle`s data updated!',
+    DELETED: 'Vehicle deleted from our system!',
   },
   VALIDATION: {
     REQUIRED: {

@@ -12,6 +12,7 @@ module.exports = {
       booking_id: {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED,
+        references: {model: 'bookings', key: 'id'}
       },
       payment_amount: {
         allowNull: false,

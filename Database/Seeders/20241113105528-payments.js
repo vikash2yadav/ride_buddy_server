@@ -17,7 +17,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        booking_id: 2, // Assuming booking with id 2 exists
+        booking_id: 1, // Assuming booking with id 2 exists
         payment_amount: 8500.00,
         payment_method: 'paypal',
         payment_status: 'completed',
@@ -29,7 +29,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        booking_id: 3, // Assuming booking with id 3 exists
+        booking_id: 2, // Assuming booking with id 3 exists
         payment_amount: 15000.00,
         payment_method: 'debit_card',
         payment_status: 'pending',
@@ -41,7 +41,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        booking_id: 4, // Assuming booking with id 4 exists
+        booking_id: 2, // Assuming booking with id 4 exists
         payment_amount: 12000.00,
         payment_method: 'cash',
         payment_status: 'failed',

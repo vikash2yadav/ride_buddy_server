@@ -2,7 +2,7 @@ const { Op } = require("sequelize");
 const { STATUS_CODES, STATUS } = require("../Config/constant");
 const {
   payments: paymentSchema,
-  booking: bookingSchema
+  bookings: bookingSchema
 } = require("../Database/Schema");
 
 class paymentModel {

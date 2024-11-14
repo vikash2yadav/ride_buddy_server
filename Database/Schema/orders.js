@@ -125,6 +125,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       type: DataTypes.TEXT,
     },
+    is_delete: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,

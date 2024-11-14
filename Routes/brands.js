@@ -3,16 +3,16 @@ const router = express.Router();
 const brandController = new (require("../Controllers/brands"))();
 const Authentication = new (require("../Middlewares/authentication"))();
 
-router.route("/add").post(Authentication?.adminAuth, brandController.add);
+router.route("/add").post(Authentication?.userAuth, brandController.add);
 
-router.route("/update").put(Authentication?.adminAuth, brandController.update);
+router.route("/update").put(Authentication?.userAuth, brandController.update);
 
 router
   .route("/delete/:id")
-  .put(Authentication?.adminAuth, brandController.delete);
+  .put(Authentication?.userAuth, brandController.delete);
 
-router.route("/get/:id").get(Authentication?.adminAuth, brandController.get);
+router.route("/get/:id").get(Authentication?.userAuth, brandController.get);
 
-router.route("/list").post(Authentication?.adminAuth, brandController.list);
+router.route("/list").post(Authentication?.userAuth, brandController.list);
 
 module.exports = router;

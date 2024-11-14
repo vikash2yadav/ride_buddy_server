@@ -4,18 +4,14 @@ const { STATUS_CODES, STATUS_MESSAGES } = require("../Config/constant");
 class orderController {
   // add
   async add(req, res) {
-    let response = await orderModel.add(req?.body);
-
-    if(response.status === STATUS_CODES.ALREADY_REPORTED){
-      return res.handler.conflict(undefined, STATUS_MESSAGES.EXISTS.ORDER);
-    }
+    let response = await orderModel.add(req?.userInfo, req?.body);
 
     res.handler.success(response, STATUS_MESSAGES.ORDER.ADDED);
   }
 
   // update
   async update(req, res) {
-    let response = await orderModel.update(req?.body);
+    let response = await orderModel.update(req?.userInfo, req?.body);
 
     if(response.status === STATUS_CODES.NOT_FOUND){
       return res.handler.notFound(undefined, STATUS_MESSAGES.NOT_FOUND.ORDER);

@@ -5,6 +5,7 @@ const {
   brands: brandSchema,
   modells: modelSchema,
   users: userSchema,
+  vehicle_images: vehicleImagesSchema,
 } = require("../Database/Schema");
 
 class vehicleModel {
@@ -106,6 +107,10 @@ class vehicleModel {
         },
         {
           model: userSchema,
+          as: "addedBy",
+        },
+        {
+          model: vehicleImagesSchema,
         },
       ],
     });
@@ -137,7 +142,11 @@ class vehicleModel {
         },
         {
           model: userSchema,
+          as: "addedBy"
         },
+        {
+          model: vehicleImagesSchema
+        }
       ],
     });
   }

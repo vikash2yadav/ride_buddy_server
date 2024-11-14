@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { STATUS_CODES, STATUS, STATUS_MESSAGES } = require("../Config/constant");
+const { STATUS_CODES, STATUS, STATUS_MESSAGES, ROLES } = require("../Config/constant");
 const {
   orders: orderSchema,
   orderDetails: orderDatailSchema,
@@ -9,21 +9,17 @@ const {
 
 class orderModel {
   // add
-  async add(bodyData) {
+  async add(userInfo, bodyData) {
+    // return console.log(bodyData?.orderDetails)
     const {orderDetails} = bodyData;
 
-    let data = await orderSchema.findOne({
-      where: {
-        user_id: bodyData?.user_id,
-        vehicle_id: bodyData?.vehicle_id,
-        status: STATUS.ACTIVE || STATUS.PENDING
-      },
-    });
-
-    if (data) {
-      return {
-        status: STATUS_CODES.ALREADY_REPORTED,
-      };
+    if (
+      userInfo?.role_id === ROLES.ADMIN ||
+      userInfo?.role_id === ROLES.SUPER_ADMIN
+    ) {
+      bodyData.user_id;
+    } else {
+      bodyData.user_id = userInfo?.id;
     }
 
     let detail = await orderDatailSchema.create(orderDetails);
@@ -32,8 +28,8 @@ class orderModel {
   }
 
   // update
-  async update(bodyData) {
-    const {order_Details} = bodyData;
+  async update(userInfo, bodyData) {
+    const {orderDetails} = bodyData;
 
     let data = await orderSchema.findOne({
       where: {
@@ -62,15 +58,24 @@ class orderModel {
       };
     }
 
+    if (
+      userInfo?.role_id === ROLES.ADMIN ||
+      userInfo?.role_id === ROLES.SUPER_ADMIN
+    ) {
+      bodyData.user_id;
+    } else {
+      bodyData.user_id = userInfo?.id;
+    }
+
     await orderSchema.update(bodyData, {
       where: {
         id: bodyData?.id,
       },
     });
 
-    await orderDatailSchema.update(order_Details, {
+    await orderDatailSchema.update(orderDetails, {
         where: {
-            order_id: bodyData?.id
+            id: data?.order_detail_id
         }
     });
     return true;

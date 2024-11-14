@@ -54,7 +54,7 @@ module.exports = {
         defaultValue: true,
       },
       price_per_hour: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DECIMAL(20, 2),
       },
       is_available_per_day: {
@@ -63,7 +63,7 @@ module.exports = {
         defaultValue: true,
       },
       price_per_day: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DECIMAL(20, 2),
       },
       is_available_per_week: {
@@ -72,7 +72,7 @@ module.exports = {
         defaultValue: true,
       },
       price_per_week: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DECIMAL(20, 2),
       },
       is_available_per_month: {
@@ -81,7 +81,7 @@ module.exports = {
         defaultValue: true,
       },
       price_per_month: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DECIMAL(20, 2),
       },
       insurance_type: {
