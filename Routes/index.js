@@ -9,6 +9,7 @@ const reviewRoutes = require('./reviews');
 const bookingRoutes = require("./bookings");
 const paymentRoutes = require("./payments");
 const notificationRoutes = require("./notifications");
+const moduleRoutes = require("./modules");
 
 const router = express.Router();
 
@@ -22,5 +23,6 @@ router.use("/review", reviewRoutes);
 router.use("/booking", bookingRoutes);
 router.use("/payment", paymentRoutes);
 router.use("/notification", notificationRoutes);
+router.use("/module", moduleRoutes);
 
 module.exports = router;

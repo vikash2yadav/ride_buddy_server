@@ -1,14 +1,11 @@
 const { Op } = require("sequelize");
 const { STATUS_CODES, STATUS } = require("../Config/constant");
-const {
-  brands: brandSchema,
-  modells: modelSchema,
-} = require("../Database/Schema");
+const { modules: moduleSchema } = require("../Database/Schema");
 
-class modelModel {
+class modulesModel {
   // add
   async add(bodyData) {
-    let data = await modelSchema.findOne({
+    let data = await moduleSchema.findOne({
       where: {
         name: bodyData?.name,
       },
@@ -20,12 +17,12 @@ class modelModel {
       };
     }
 
-    return await modelSchema.create(bodyData);
+    return await moduleSchema.create(bodyData);
   }
 
   // update
   async update(bodyData) {
-    let data = await modelSchema.findOne({
+    let data = await moduleSchema.findOne({
       where: {
         id: bodyData?.id,
         is_delete: false,
@@ -38,20 +35,20 @@ class modelModel {
       };
     }
 
-    let existmodel = await modelSchema.findOne({
+    let existmodule = await moduleSchema.findOne({
       where: {
         name: bodyData?.name,
         id: { [Op.ne]: bodyData?.id },
       },
     });
 
-    if (existmodel) {
+    if (existmodule) {
       return {
         status: STATUS_CODES.ALREADY_REPORTED,
       };
     }
 
-    return await modelSchema.update(bodyData, {
+    return await moduleSchema.update(bodyData, {
       where: {
         id: bodyData?.id,
       },
@@ -62,7 +59,7 @@ class modelModel {
   async delete(params) {
     const { id } = params;
 
-    let data = await modelSchema.findOne({
+    let data = await moduleSchema.findOne({
       where: {
         id: id,
         is_delete: false,
@@ -75,7 +72,7 @@ class modelModel {
       };
     }
 
-    return await modelSchema.update(
+    return await moduleSchema.update(
       { is_delete: STATUS.DELETED },
       {
         where: { id: id },
@@ -87,14 +84,10 @@ class modelModel {
   async get(params) {
     const { id } = params;
 
-    let data = await modelSchema.findOne({
+    let data = await moduleSchema.findOne({
       where: {
         id: id,
         is_delete: false,
-      },
-      include: {
-        model: brandSchema,
-        attributes: ["name", "logo_url", "country_of_origin", "founded_year"],
       },
     });
 
@@ -109,16 +102,12 @@ class modelModel {
 
   // list
   async list(bodyData) {
-    return await modelSchema.findAll({
+    return await moduleSchema.findAll({
       where: {
         is_delete: false,
-      },
-      include: {
-        model: brandSchema,
-        attributes: ["name", "logo_url", "country_of_origin", "founded_year"],
       },
     });
   }
 }
 
-module.exports = modelModel;
+module.exports = modulesModel;
