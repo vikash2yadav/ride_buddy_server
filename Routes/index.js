@@ -10,6 +10,7 @@ const bookingRoutes = require("./bookings");
 const paymentRoutes = require("./payments");
 const notificationRoutes = require("./notifications");
 const moduleRoutes = require("./modules");
+const promoCodeRoutes = require("./promo_codes");
 
 const router = express.Router();
 
@@ -24,5 +25,6 @@ router.use("/booking", bookingRoutes);
 router.use("/payment", paymentRoutes);
 router.use("/notification", notificationRoutes);
 router.use("/module", moduleRoutes);
+router.use("/promo_code", promoCodeRoutes);
 
 module.exports = router;

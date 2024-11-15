@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       users.hasMany(models.vehicles, {
         foreignKey: "added_by",
-        as: 'addedBy',
+        as: "addedBy",
         onDelete: "cascade",
       });
       users.hasMany(models.reviews, {
@@ -51,6 +51,10 @@ module.exports = (sequelize, DataTypes) => {
       });
       users.hasMany(models.notifications, {
         foreignKey: "user_id",
+        onDelete: "cascade",
+      });
+      users.hasMany(models.promo_codes, {
+        foreignKey: "created_by",
         onDelete: "cascade",
       });
     }
