@@ -1,18 +1,42 @@
 const express = require("express");
+const { MODULES, ACCESS_TYPES } = require("../Config/constant");
 const router = express.Router();
 const reviewController = new (require("../Controllers/reviews"))();
 const Authentication = new (require("../Middlewares/authentication"))();
 
-router.route("/add").post(Authentication.userAuth, reviewController.add);
+router
+  .route("/add")
+  .post(
+    Authentication?.checkAccess(MODULES.REVIEWS, ACCESS_TYPES.CREATE),
+    reviewController.add
+  );
 
-router.route("/update").put(Authentication.userAuth, reviewController.update);
+router
+  .route("/update")
+  .put(
+    Authentication?.checkAccess(MODULES.REVIEWS, ACCESS_TYPES.UPDATE),
+    reviewController.update
+  );
 
 router
   .route("/delete/:id")
-  .put(Authentication.userAuth, reviewController.delete);
+  .put(
+    Authentication?.checkAccess(MODULES.REVIEWS, ACCESS_TYPES.DELETE),
+    reviewController.delete
+  );
 
-router.route("/get/:id").get(Authentication.userAuth, reviewController.get);
+router
+  .route("/get/:id")
+  .get(
+    Authentication?.checkAccess(MODULES.REVIEWS, ACCESS_TYPES.READ),
+    reviewController.get
+  );
 
-router.route("/list").post(Authentication.userAuth, reviewController.list);
+router
+  .route("/list")
+  .post(
+    Authentication?.checkAccess(MODULES.REVIEWS, ACCESS_TYPES.READ),
+    reviewController.list
+  );
 
 module.exports = router;

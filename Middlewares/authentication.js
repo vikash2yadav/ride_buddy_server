@@ -1,53 +1,63 @@
 const userModel = new (require("../Models/users"))();
 const { STATUS_MESSAGES, ROLES } = require("../Config/constant");
+const { permissions: permissionSchema } = require("../Database/Schema");
 
 class Authentication {
   constructor() {
-    this.userAuth = this.userAuth.bind(this);
+    this.checkAccess = this.checkAccess.bind(this);
   }
 
-  async userAuth(req, res, next) {
-    let authToken = req.headers["user-token"];
-    if (!authToken) {
-      res.handler.validationError(undefined, STATUS_MESSAGES.TOKEN.INVALID);
-      return false;
-    }
+  checkAccess(module_id, access_type) {
+    return async (req, res, next) => {
+      const authToken = req.headers["user-token"];
+      if (!authToken) {
+        return res.handler.validationError(
+          undefined,
+          STATUS_MESSAGES.TOKEN.INVALID
+        );
+      }
 
-    const userToken = await userModel.getUserInfo(authToken);
+      const userToken = await userModel.getUserInfo(authToken);
 
-    if (!userToken) {
-      res.handler.unauthorized();
-      return;
-    }
+      if (!userToken) {
+        return res.handler.unauthorized();
+      }
 
-    req.userInfo = userToken
-      ? userToken?.user
-        ? userToken?.user["dataValues"]
-        : null
-      : null;
-    next();
-  }
+      req.userInfo = userToken?.user ? userToken.user["dataValues"] : null;
 
-  async adminAuth(req, res, next) {
-    let authToken = req.headers["user-token"];
-    if (!authToken) {
-      res.handler.validationError(undefined, STATUS_MESSAGES.TOKEN.INVALID);
-      return false;
-    }
+      if (!module_id || !access_type) {
+        return res.handler.validationError(
+          undefined,
+          STATUS_MESSAGES.SERVER_ERROR
+        );
+      }
 
-    const userToken = await userModel.getUserInfo(authToken);
+      let check = await permissionSchema.findOne({
+        where: {
+          module_id: module_id,
+          role_id: req?.userInfo?.role_id,
+        },
+      });
 
-    if (userToken?.user?.role_id === ROLES.SUPER_ADMIN || ROLES.ADMIN) {
-      req.userInfo = userToken
-        ? userToken?.user
-          ? userToken?.user["dataValues"]
-          : null
-        : null;
+      if (!check) {
+        return res.handler.unauthorized(
+          undefined,
+          STATUS_MESSAGES.NOT_FOUND.PERMISSION
+        );
+      }
+
+      const permissionGranted = check[access_type];
+
+      if (!permissionGranted) {
+        return res.handler.unauthorized(
+          undefined,
+          `You don't have ${access_type} permission for this module.`
+        );
+      }
+
       next();
-    } else {
-      res.handler.unauthorized();
-      return;
-    }
+    };
   }
 }
+
 module.exports = Authentication;
