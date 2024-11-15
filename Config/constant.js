@@ -58,7 +58,8 @@ exports.STATUS_MESSAGES = {
     BRAND: 'Brand is already registered!',
     MODEL: 'Model is already registered!',
     VEHICLE: 'Vehicle is already registered!',
-    MODULE: 'Module is already exist!'
+    MODULE: 'Module is already exist!',
+    PROMO_CODE: 'Promo code is already exist!'
   },
   NOT_FOUND: {
     ID: "Id is not available in our system!",
@@ -76,7 +77,8 @@ exports.STATUS_MESSAGES = {
     BRAND: 'Brand not found!',
     MODEL: 'Model not found!',
     VEHICLE: 'Vehicle not found!',
-    MODULE: 'Module not found!'
+    MODULE: 'Module not found!',
+    PROMO_CODE: 'Promo code not found!'
   },
   PASSWORD: {
     MISMATCH: "Provided password do not match",
@@ -173,6 +175,11 @@ exports.STATUS_MESSAGES = {
     ADDED: 'Module added!',
     UPDATED: 'Module updated!',
     DELETED: 'Module deleted!',
+  },
+  PROMO_CODE: {
+    ADDED: 'Promo code added!',
+    UPDATED: 'Promo code updated!',
+    DELETED: 'Promo code deleted!',
   },
   VALIDATION: {
     REQUIRED: {
