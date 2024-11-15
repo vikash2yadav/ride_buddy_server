@@ -2,13 +2,24 @@ const { Op } = require("sequelize");
 const { STATUS_CODES, STATUS } = require("../Config/constant");
 const {
   payments: paymentSchema,
-  bookings: bookingSchema
+  bookings: bookingSchema,
 } = require("../Database/Schema");
+const { v4: uuidv4 } = require("uuid");
+
+function generateTransactionId() {
+  const uuidPart = uuidv4();
+  const timestamp = Date.now();
+  const randomStr = Math.random().toString(36).substr(2, 6);
+  const transactionId = `${uuidPart}-${timestamp}-${randomStr}`;
+  return transactionId;
+}
 
 class paymentModel {
   // add
   async add(bodyData) {
-    return await paymentSchema.create(bodyData);
+    let transaction_id = generateTransactionId();
+
+    return await paymentSchema.create({ ...bodyData, transaction_id });
   }
 
   // update
@@ -70,7 +81,7 @@ class paymentModel {
       include: [
         {
           model: bookingSchema,
-        }
+        },
       ],
     });
 
@@ -92,7 +103,7 @@ class paymentModel {
       include: [
         {
           model: bookingSchema,
-        }
+        },
       ],
     });
   }

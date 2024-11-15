@@ -43,6 +43,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'vehicle_id',
         onDelete: 'cascade'
       });
+      vehicles.hasMany(models.favourites, {
+        foreignKey: 'vehicle_id',
+        onDelete: 'cascade'
+      });
     }
   }
   vehicles.init({

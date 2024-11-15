@@ -23,7 +23,7 @@ class promoCodeModel {
   }
 
   // update
-  async update(bodyData) {
+  async update(userInfo, bodyData) {
     bodyData.created_by = userInfo?.id;
 
     let data = await promoCodeSchema.findOne({

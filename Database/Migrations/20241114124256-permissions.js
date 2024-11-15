@@ -12,10 +12,12 @@ module.exports = {
       role_id: {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED,
+        references: { model: "roles", key: "id" },
       },
       module_id: {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED,
+        references: { model: "modules", key: "id" },
       },
       read_access: {
         allowNull: false,

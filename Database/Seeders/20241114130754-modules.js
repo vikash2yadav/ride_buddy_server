@@ -49,6 +49,21 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        name: "Favourites",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: "Promo Codes",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: "Reviews",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
     ]);
   },
 
