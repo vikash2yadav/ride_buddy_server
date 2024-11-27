@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ridebuddy.js",
     "dev": "nodemon ridebuddy.js",
     "one": "node ridebuddy.js"
   },
