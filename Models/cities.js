@@ -83,16 +83,33 @@ class cityModel {
 
   // list
   async list(bodyData) {
-    return await citySchema.findAll();
+    let list = await citySchema.findAll();
+
+    let updatedList = list.map((city) => {
+      return {
+        ...city.toJSON(),
+        icon: IMAGE_PATHS.LOCATION + city.icon,
+      };
+    });
+
+    return updatedList;
   }
 
-   // imp list
-   async impList() {
-    return await citySchema.findAll({
+  // imp list
+  async impList() {
+    let implist = await citySchema.findAll({
       where: {
-        imp: true
-      }
+        imp: true,
+      },
     });
+
+    let updatedList = implist.map((city) => {
+      return {
+        ...city.toJSON(),
+        icon: IMAGE_PATHS.LOCATION + city.icon,
+      };
+    });
+    return updatedList;
   }
 }
 

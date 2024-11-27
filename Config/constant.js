@@ -271,5 +271,6 @@ exports.ACCESS_TYPES = {
 
 
 exports.IMAGE_PATHS = {
-  BRAND: process.env.FRONTEND_IMAGE_PATH + 'brands/'
+  BRAND: process.env.FRONTEND_IMAGE_PATH + 'brands/',
+  LOCATION: process.env.FRONTEND_IMAGE_PATH + 'locations/'
 }
