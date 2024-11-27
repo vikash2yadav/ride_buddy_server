@@ -12,6 +12,7 @@ const notificationRoutes = require("./notifications");
 const moduleRoutes = require("./modules");
 const promoCodeRoutes = require("./promo_codes");
 const favouriteRoutes = require("./favourites");
+const cityRoutes = require('./cities');
 
 const router = express.Router();
 
@@ -28,5 +29,6 @@ router.use("/notification", notificationRoutes);
 router.use("/module", moduleRoutes);
 router.use("/promo_code", promoCodeRoutes);
 router.use("/favourite", favouriteRoutes);
+router.use("/city", cityRoutes);
 
 module.exports = router;

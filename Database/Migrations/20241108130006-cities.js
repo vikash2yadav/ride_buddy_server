@@ -9,9 +9,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.BIGINT(20).UNSIGNED,
       },
+      icon: {
+        allowNull: true,
+        type: Sequelize.TEXT,
+      },
       name: {
         allowNull: false,
         type: Sequelize.STRING(255),
+      },
+      imp: {
+        allowNull: true,
+        type: Sequelize.BOOLEAN,
       },
       state_id: {
         allowNull: false,

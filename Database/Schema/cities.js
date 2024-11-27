@@ -26,9 +26,17 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.BIGINT(20).UNSIGNED,
       },
+      icon: {
+        allowNull: true,
+        type: DataTypes.TEXT,
+      },
       name: {
         allowNull: false,
         type: DataTypes.STRING(255),
+      },
+      imp: {
+        allowNull: true,
+        type: DataTypes.BOOLEAN,
       },
       state_id: {
         allowNull: false,

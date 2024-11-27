@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { STATUS_CODES, STATUS } = require("../Config/constant");
+const { STATUS_CODES, STATUS, IMAGE_PATHS } = require("../Config/constant");
 const { brands: brandSchema } = require("../Database/Schema");
 
 class brandModel {
@@ -102,11 +102,20 @@ class brandModel {
 
   // list
   async list(bodyData) {
-    return await brandSchema.findAll({
+    const brands = await brandSchema.findAll({
       where: {
         is_delete: false,
       },
     });
+  
+    const updatedBrands = brands.map(brand => {
+      return {
+        ...brand.toJSON(),  
+        logo_url: IMAGE_PATHS.BRAND + brand.logo_url, 
+      };
+    });
+  
+    return updatedBrands;
   }
 }
 

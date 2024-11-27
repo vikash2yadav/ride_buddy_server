@@ -81,6 +81,7 @@ exports.STATUS_MESSAGES = {
     PROMO_CODE: "Promo code not found!",
     FAVOURITE: "Favourite not found!",
     PERMISSION: "Sorry, We can`t found permission, please try again!.",
+    CITY: 'City not found!'
 
   },
   PASSWORD: {
@@ -189,6 +190,11 @@ exports.STATUS_MESSAGES = {
     UPDATED: "Updated to favourites!",
     DELETED: "Deleted to favourites!",
   },
+  CITY: {
+    ADDED: "City Added!",
+    UPDATED: "City Updated!",
+    DELETED: "City Deleted!",
+  },
   VALIDATION: {
     REQUIRED: {
       PASSWORD: "Please enter password.",
@@ -251,8 +257,9 @@ exports.MODULES = {
   PAYMENTS: 8,
   MODULES: 9,
   FAVOURITES: 10,
-  PROMO_CODE: 12,
-  REVIEWS: 13
+  PROMO_CODE: 11,
+  REVIEWS: 12,
+  CITY: 13
 };
 
 exports.ACCESS_TYPES = {
@@ -260,4 +267,9 @@ exports.ACCESS_TYPES = {
   CREATE: 'create_access',
   UPDATE: 'update_access',
   DELETE: 'delete_access'
+}
+
+
+exports.IMAGE_PATHS = {
+  BRAND: process.env.FRONTEND_IMAGE_PATH + 'brands/'
 }

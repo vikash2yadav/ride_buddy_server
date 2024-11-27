@@ -125,6 +125,16 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        role_id: 1,
+        module_id: 13,
+        read_access: true,
+        create_access: true,
+        update_access: true,
+        delete_access: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
 
       // Admin
       {
@@ -243,6 +253,16 @@ module.exports = {
         read_access: true,
         create_access: true,
         update_access: false,
+        delete_access: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        role_id: 2,
+        module_id: 13,
+        read_access: true,
+        create_access: true,
+        update_access: true,
         delete_access: true,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -369,6 +389,16 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        role_id: 3,
+        module_id: 13,
+        read_access: true,
+        create_access: true,
+        update_access: true,
+        delete_access: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
 
       // Customer
       {
@@ -484,6 +514,16 @@ module.exports = {
       {
         role_id: 4,
         module_id: 12,
+        read_access: true,
+        create_access: true,
+        update_access: true,
+        delete_access: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        role_id: 4,
+        module_id: 13,
         read_access: true,
         create_access: true,
         update_access: true,

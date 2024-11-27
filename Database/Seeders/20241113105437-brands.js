@@ -6,8 +6,7 @@ module.exports = {
     await queryInterface.bulkInsert("brands", [
       {
         name: "Toyota",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/9/91/Toyota_logo.png",
+        logo_url: "toyota.jpeg",
         country_of_origin: "Japan",
         founded_year: 1937,
         description:
@@ -18,8 +17,7 @@ module.exports = {
       },
       {
         name: "Harley-Davidson",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/c/c1/Harley-Davidson_logo.png",
+        logo_url: "harley.png",
         country_of_origin: "United States",
         founded_year: 1903,
         description:
@@ -30,8 +28,7 @@ module.exports = {
       },
       {
         name: "Yamaha",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/a/a1/Yamaha_logo.svg",
+        logo_url: "yamaha.jpeg",
         country_of_origin: "Japan",
         founded_year: 1953,
         description:
@@ -42,8 +39,7 @@ module.exports = {
       },
       {
         name: "Ducati",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/f/ff/Ducati_Logo_2018.svg",
+        logo_url: "ducati.jpeg",
         country_of_origin: "Italy",
         founded_year: 1926,
         description:
@@ -54,8 +50,7 @@ module.exports = {
       },
       {
         name: "BMW",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/4/44/BMW_logo_2020.svg",
+        logo_url: "bmw.jpeg",
         country_of_origin: "Germany",
         founded_year: 1916,
         description:
@@ -66,8 +61,7 @@ module.exports = {
       },
       {
         name: "Honda",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/5/5b/Honda_logo_2023.svg",
+        logo_url: "honda.jpeg",
         country_of_origin: "Japan",
         founded_year: 1946,
         description:
@@ -78,8 +72,7 @@ module.exports = {
       },
       {
         name: "Ford",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/1/1d/Ford_logo_2017.svg",
+        logo_url: "ford.jpeg",
         country_of_origin: "United States",
         founded_year: 1903,
         description:
@@ -90,8 +83,7 @@ module.exports = {
       },
       {
         name: "Suzuki",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/f/f5/Suzuki_logo_2019.svg",
+        logo_url: "maruti.jpeg",
         country_of_origin: "Japan",
         founded_year: 1909,
         description:
@@ -102,8 +94,7 @@ module.exports = {
       },
       {
         name: "Kawasaki",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/4/45/Kawasaki_logo.svg",
+        logo_url: "kawasaki.png",
         country_of_origin: "Japan",
         founded_year: 1896,
         description:
@@ -114,8 +105,7 @@ module.exports = {
       },
       {
         name: "Mercedes-Benz",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/4/47/Mercedes-Benz_logo_2010.svg",
+        logo_url: "mercedes_benz.jpg",
         country_of_origin: "Germany",
         founded_year: 1926,
         description:
@@ -126,8 +116,7 @@ module.exports = {
       },
       {
         name: "Nissan",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/4/40/Nissan_logo_2013.svg",
+        logo_url: "nissan.jpeg",
         country_of_origin: "Japan",
         founded_year: 1933,
         description:
@@ -137,14 +126,68 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: "Harley-Davidson",
-        logo_url:
-          "https://upload.wikimedia.org/wikipedia/commons/c/c1/Harley-Davidson_logo.png",
-        country_of_origin: "United States",
-        founded_year: 1903,
+        name: "TATA Motors",
+        logo_url: "tata.png",
+        country_of_origin: "India",
+        founded_year: 1945,
         description:
-          "Harley-Davidson is an iconic American motorcycle manufacturer, known for its heavyweight motorcycles.",
-        website_url: "https://www.harley-davidson.com",
+          "TATA Motors is an iconic Indian Motors manufacturer, known for its heavyweight Motors.",
+        website_url: "https://www.tatamotors.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "Hyundai",
+        logo_url: "hyundai.jpeg",
+        country_of_origin: "South Korea",
+        founded_year: 1967,
+        description:
+          "Hyundai is a major South Korean automaker known for producing affordable and reliable vehicles.",
+        website_url: "https://www.hyundai.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "Skoda",
+        logo_url: "skoda.jpeg",
+        country_of_origin: "Czech Republic",
+        founded_year: 1895,
+        description:
+          "Skoda is a well-established Czech automaker known for its practical and reliable vehicles.",
+        website_url: "https://www.skoda-auto.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "Mahindra",
+        logo_url: "mahindra.jpeg",
+        country_of_origin: "India",
+        founded_year: 1945,
+        description:
+          "Mahindra is an Indian multinational corporation that manufactures cars, tractors, and commercial vehicles.",
+        website_url: "https://www.mahindra.com",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "MG (Morris Garages)",
+        logo_url: "mg.png",
+        country_of_origin: "United Kingdom",
+        founded_year: 1924,
+        description:
+          "MG is a British automotive marque known for its iconic sports cars and more recently, electric vehicles.",
+        website_url: "https://www.mg.co.uk",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "Kia",
+        logo_url: "kia.png",
+        country_of_origin: "South Korea",
+        founded_year: 1944,
+        description:
+          "Kia is a South Korean automaker known for its innovative and affordable cars, such as the Kia Soul and Optima.",
+        website_url: "https://www.kia.com",
         createdAt: new Date(),
         updatedAt: new Date(),
       },

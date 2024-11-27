@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 const server = createServer(app);
+app.use("/RIDEBUDDY/images", express.static(__dirname + "/Assets"));
 
 // middlewares
 app.use(express.json());

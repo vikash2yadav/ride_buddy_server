@@ -64,6 +64,11 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        name: "Location",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
     ]);
   },
 
