@@ -47,6 +47,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'vehicle_id',
         onDelete: 'cascade'
       });
+      vehicles.hasMany(models.specifications, {
+        foreignKey: 'vehicle_id',
+        onDelete: 'cascade'
+      });
+      vehicles.hasMany(models.features, {
+        foreignKey: 'vehicle_id',
+        onDelete: 'cascade'
+      });
     }
   }
   vehicles.init({
@@ -214,16 +222,36 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM("New", "Good", "Fair", "Poor"),
       defaultValue: "Fair",
     },
+    seats: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    km_driven: {
+      allowNull: false,
+      type: DataTypes.BIGINT(10),
+    },
+    rto: {
+      allowNull: false,
+      type: DataTypes.STRING(255),
+    },
+    ownership: {
+      allowNull: false,
+      type: DataTypes.ENUM("First", "Second", "Third", "Forth", "Fifth", "Other"),
+    },
+    transmission: {
+      allowNull: false,
+      type: DataTypes.STRING(255),
+    },
     owner_id: {
       allowNull: false,
       type: DataTypes.BIGINT(20).UNSIGNED,
       references: {model: 'users', key: 'id'}
     },
-    // added_by: {
-    //   allowNull: false,
-    //   type: DataTypes.BIGINT(20).UNSIGNED,
-    //   references: {model: 'users', key: 'id'}
-    // },
+    added_by: {
+      allowNull: false,
+      type: DataTypes.BIGINT(20).UNSIGNED,
+      references: {model: 'users', key: 'id'}
+    },
     status: {
       allowNull: false,
       type: DataTypes.ENUM("active", "inactive"),

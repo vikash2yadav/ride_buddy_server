@@ -6,6 +6,11 @@ const {
   modells: modelSchema,
   users: userSchema,
   vehicle_images: vehicleImagesSchema,
+  specifications: specificationsSchema,
+  specification_types: specificationTypeSchema,
+  feature_types: featureTypeSchema,
+  features: featuresSchema,
+  reviews: reviewsSchema,
 } = require("../Database/Schema");
 
 class vehicleModel {
@@ -112,6 +117,25 @@ class vehicleModel {
         {
           model: vehicleImagesSchema,
         },
+        {
+          model: specificationsSchema,
+          include: {
+            model: specificationTypeSchema,
+          },
+        },
+        {
+          model: featuresSchema,
+          include: {
+            model: featureTypeSchema,
+          },
+        },
+        {
+          model: reviewsSchema,
+          include: {
+            model: userSchema,
+            attributes: ["fullName"],
+          },
+        },
       ],
     });
 
@@ -142,11 +166,20 @@ class vehicleModel {
         },
         {
           model: userSchema,
-          as: "addedBy"
+          as: "addedBy",
         },
         {
-          model: vehicleImagesSchema
-        }
+          model: vehicleImagesSchema,
+        },
+        {
+          model: specificationsSchema,
+        },
+        {
+          model: featuresSchema,
+          include: {
+            model: featureTypeSchema,
+          },
+        },
       ],
     });
   }

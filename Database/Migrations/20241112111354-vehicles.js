@@ -20,12 +20,12 @@ module.exports = {
       brand_id: {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED,
-        references: {model: 'brands', key: 'id'}
+        references: { model: "brands", key: "id" },
       },
       model_id: {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED,
-        references: {model: 'modells', key: 'id'}
+        references: { model: "modells", key: "id" },
       },
       year: {
         allowNull: false,
@@ -124,7 +124,7 @@ module.exports = {
           "Under Maintenance",
           "Reserved"
         ),
-        defaultValue: 'Available'
+        defaultValue: "Available",
       },
       availability_start_date: {
         allowNull: false,
@@ -167,15 +167,35 @@ module.exports = {
         type: Sequelize.ENUM("New", "Good", "Fair", "Poor"),
         defaultValue: "Fair",
       },
+      seats: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      km_driven: {
+        allowNull: false,
+        type: Sequelize.BIGINT(10),
+      },
+      rto: {
+        allowNull: false,
+        type: Sequelize.STRING(255),
+      },
+      ownership: {
+        allowNull: false,
+        type: Sequelize.ENUM("First", "Second", "Third", "Forth", "Fifth", "Other"),
+      },
+      transmission: {
+        allowNull: false,
+        type: Sequelize.STRING(255),
+      },
       owner_id: {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED,
-        references: {model: 'users', key: 'id'}
+        references: { model: "users", key: "id" },
       },
       added_by: {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED,
-        references: {model: 'users', key: 'id'}
+        references: { model: "users", key: "id" },
       },
       status: {
         allowNull: false,
