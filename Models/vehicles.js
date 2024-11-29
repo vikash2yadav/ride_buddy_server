@@ -1,5 +1,5 @@
-const { Op } = require("sequelize");
-const { STATUS_CODES, STATUS } = require("../Config/constant");
+const { Op, fn, col } = require("sequelize");
+const { STATUS_CODES, STATUS, IMAGE_PATHS } = require("../Config/constant");
 const {
   vehicles: vehicleSchema,
   brands: brandSchema,
@@ -116,6 +116,7 @@ class vehicleModel {
         },
         {
           model: vehicleImagesSchema,
+          attributes: ['image_type', [fn('concat', `${IMAGE_PATHS.VEHICLE}`, col('image_url')), "image_url"]],
         },
         {
           model: specificationsSchema,
