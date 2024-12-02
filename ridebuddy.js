@@ -4,8 +4,6 @@ const { config } = require("dotenv");
 const cors = require("cors");
 config({ path: ".env" });
 const routes = require("./Routes");
-require("./Config/database.js");
-require("./Database/Schema/index.js");
 const bodyParser = require("body-parser");
 
 const app = express();
