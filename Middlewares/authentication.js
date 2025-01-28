@@ -9,7 +9,7 @@ class Authentication {
 
   checkAccess(module_id, access_type) {
     return async (req, res, next) => {
-      const authToken = req.headers["user-token"];
+      const authToken = req.headers["user_token"];
       if (!authToken) {
         return res.handler.validationError(
           undefined,

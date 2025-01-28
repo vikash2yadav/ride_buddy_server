@@ -446,6 +446,7 @@ module.exports = {
       {
         name: "Ahmedabad",
         state_id: 7,
+        imp: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -1866,6 +1867,7 @@ module.exports = {
       {
         name: "Kolkata",
         state_id: 27,
+        imp: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

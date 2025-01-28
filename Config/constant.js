@@ -60,6 +60,7 @@ exports.STATUS_MESSAGES = {
     VEHICLE: "Vehicle is already registered!",
     MODULE: "Module is already exist!",
     PROMO_CODE: "Promo code is already exist!",
+    CITY: "City is already exist!"
   },
   NOT_FOUND: {
     ID: "Id is not available in our system!",
@@ -189,6 +190,11 @@ exports.STATUS_MESSAGES = {
     UPDATED: "Updated to favourites!",
     DELETED: "Deleted to favourites!",
   },
+  CITY: {
+    ADDED: "Added to city!",
+    UPDATED: "Updated to city!",
+    DELETED: "Deleted to city!",
+  },
   VALIDATION: {
     REQUIRED: {
       PASSWORD: "Please enter password.",
@@ -252,7 +258,8 @@ exports.MODULES = {
   MODULES: 9,
   FAVOURITES: 10,
   PROMO_CODE: 12,
-  REVIEWS: 13
+  REVIEWS: 13,
+  CITY: 14
 };
 
 exports.ACCESS_TYPES = {

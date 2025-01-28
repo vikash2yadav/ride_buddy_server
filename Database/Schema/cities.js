@@ -35,6 +35,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BIGINT(20).UNSIGNED,
         references: { model: "states", key: "id" },
       },
+      imp:{
+        type: DataTypes.TINYINT(1),
+        defaultValue: 0,
+        comment: "0 => not important 1 => important"
+      },
       status: {
         allowNull: false,
         type: DataTypes.ENUM("active", "inactive"),

@@ -18,6 +18,12 @@ module.exports = {
         type: Sequelize.BIGINT(20).UNSIGNED,
         references: { model: "states", key: "id" },
       },
+      imp:{
+        allowNull: true,
+        type: Sequelize.TINYINT(1),
+        defaultValue: 0,
+        comment: "0 => not important 1 => important"
+      },
       status: {
         allowNull: false,
         type: Sequelize.ENUM("active", "inactive"),
