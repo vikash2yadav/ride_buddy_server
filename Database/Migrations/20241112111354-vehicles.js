@@ -17,6 +17,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.ENUM("Petrol", "Diesel", "Electric", "Hybrid", "Gas"),
       },
+      category_id: {
+        allowNull: false,
+        type: Sequelize.BIGINT(20).UNSIGNED,
+        references: { model: "categories", key: "id" },
+      },
       brand_id: {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED,

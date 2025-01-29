@@ -7,6 +7,7 @@ module.exports = {
       {
         vehicle_type: "Car",
         fuel_type: "Petrol",
+        category_id: 1,
         brand_id: 1, // Assuming brand ID 1 exists in the brands table
         model_id: 2, // Assuming model ID 2 exists in the models table
         year: 2020,
@@ -53,6 +54,7 @@ module.exports = {
       {
         vehicle_type: "Bike",
         fuel_type: "Diesel",
+        category_id: 2,
         brand_id: 2, // Assuming brand ID 2 exists
         model_id: 3, // Assuming model ID 3 exists
         year: 2018,
@@ -99,6 +101,7 @@ module.exports = {
       {
         vehicle_type: "Scooter",
         fuel_type: "Electric",
+        category_id: 3,
         brand_id: 3, // Assuming brand ID 3 exists
         model_id: 4, // Assuming model ID 4 exists
         year: 2021,
@@ -145,6 +148,7 @@ module.exports = {
       {
         vehicle_type: "Car",
         fuel_type: "Hybrid",
+        category_id: 4,
         brand_id: 4,
         model_id: 5,
         year: 2022,
@@ -191,6 +195,7 @@ module.exports = {
       {
         vehicle_type: "Bike",
         fuel_type: "Petrol",
+        category_id: 1,
         brand_id: 5,
         model_id: 6,
         year: 2020,
@@ -237,6 +242,7 @@ module.exports = {
       {
         vehicle_type: "Scooter",
         fuel_type: "Electric",
+        category_id: 2,
         brand_id: 6,
         model_id: 7,
         year: 2023,

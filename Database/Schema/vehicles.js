@@ -55,6 +55,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'vehicle_id',
         onDelete: 'cascade'
       });
+      vehicles.belongsTo(models.categories, {
+        foreignKey: 'category_id',
+        onDelete: 'cascade'
+      });
     }
   }
   vehicles.init({
@@ -71,6 +75,11 @@ module.exports = (sequelize, DataTypes) => {
     fuel_type: {
       allowNull: false,
       type: DataTypes.ENUM("Petrol", "Diesel", "Electric", "Hybrid", "Gas"),
+    },
+    category_id: {
+      allowNull: false,
+      type: DataTypes.BIGINT(20).UNSIGNED,
+      references: { model: "categories", key: "id" },
     },
     brand_id: {
       allowNull: false,

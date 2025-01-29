@@ -11,6 +11,7 @@ const {
   feature_types: featureTypeSchema,
   features: featuresSchema,
   reviews: reviewsSchema,
+  categories: categorySchema
 } = require("../Database/Schema");
 
 class vehicleModel {
@@ -102,6 +103,9 @@ class vehicleModel {
       },
       include: [
         {
+          model: categorySchema,
+        },
+        {
           model: brandSchema,
         },
         {
@@ -151,11 +155,35 @@ class vehicleModel {
 
   // list
   async list(bodyData) {
+    const {filters} = bodyData;
+
+    let filterQuery = {};
+    if (filters) {
+      Object.entries(filters).map(([key, value]) => {
+          if (key != "" && value != "") {
+              if (typeof (value) === 'string') {
+                  filterQuery[key] = {
+                      [Op.like]: `%${value.trim()}%`,
+                  };
+              }
+              else {
+                  filterQuery[key] = {
+                      [Op.eq]: `${value}`
+                  };
+              }
+          }
+      });
+  }
+
     return await vehicleSchema.findAll({
       where: {
         is_delete: false,
+        ...filterQuery
       },
       include: [
+        {
+          model: categorySchema,
+        },
         {
           model: brandSchema,
         },
