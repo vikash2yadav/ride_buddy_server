@@ -93,7 +93,7 @@ class userModel {
   }
 
   // Sign In
-  async signIn(bodyData) {
+  async signIn(bodyData) {    
     let currentTime = new Date();
 
     var checkUser;
@@ -124,7 +124,7 @@ class userModel {
       if (!checkUser) {
         return {
           status: STATUS_CODES.NOT_FOUND,
-          message: STATUS_MESSAGES.NOT_FOUND.USER,
+          message: STATUS_MESSAGES.NOT_FOUND.USERNAME,
         };
       }
     } else {

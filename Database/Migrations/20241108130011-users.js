@@ -1,4 +1,7 @@
 "use strict";
+
+const { ROLES } = require('../../Config/constant');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -38,24 +41,25 @@ module.exports = {
         type: Sequelize.STRING(255),
       },
       date_of_birth: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATEONLY,
       },
       role_id: {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED,
         references: { model: "roles", key: "id" },
+        defaultValue: ROLES.CUSTOMER
       },
       profile: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.TEXT,
       },
       license_number: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING(255),
       },
       license_expiry: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATEONLY,
       },
       address: {
@@ -69,30 +73,27 @@ module.exports = {
       phone_code: {
         allowNull: false,
         type: Sequelize.STRING(20),
+        defaultValue: '91'
       },
       phone: {
         allowNull: false,
         type: Sequelize.STRING(20),
       },
-      alternate_phone_code: {
-        allowNull: false,
-        type: Sequelize.STRING(20),
-      },
       alternate_phone: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING(20),
       },
       postal_code: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING(20),
       },
       city_id: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.BIGINT(20).UNSIGNED,
         references: { model: "cities", key: "id" },
       },
       state_id: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.BIGINT(20).UNSIGNED,
         references: { model: "states", key: "id" },
       },

@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const { ROLES } = require("../../Config/constant");
 module.exports = (sequelize, DataTypes) => {
   class users extends Model {
     /**
@@ -130,24 +131,25 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(255),
       },
       date_of_birth: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.DATEONLY,
       },
       role_id: {
         allowNull: false,
         type: DataTypes.BIGINT(20).UNSIGNED,
         references: { model: "roles", key: "id" },
+        defaultValue: ROLES.CUSTOMER
       },
       profile: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.TEXT,
       },
       license_number: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING(255),
       },
       license_expiry: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.DATEONLY,
       },
       address: {
@@ -161,30 +163,27 @@ module.exports = (sequelize, DataTypes) => {
       phone_code: {
         allowNull: false,
         type: DataTypes.STRING(20),
+        defaultValue: '91'
       },
       phone: {
         allowNull: false,
         type: DataTypes.STRING(20),
       },
-      alternate_phone_code: {
-        allowNull: false,
-        type: DataTypes.STRING(20),
-      },
       alternate_phone: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING(20),
       },
       postal_code: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING(20),
       },
       city_id: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.BIGINT(20).UNSIGNED,
         references: { model: "cities", key: "id" },
       },
       state_id: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.BIGINT(20).UNSIGNED,
         references: { model: "states", key: "id" },
       },
