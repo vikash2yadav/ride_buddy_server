@@ -35,7 +35,7 @@ router
 router
   .route("/list")
   .post(
-    Authentication?.checkAccess(MODULES.VEHICLES, ACCESS_TYPES.READ),
+    // Authentication?.checkAccess(MODULES.VEHICLES, ACCESS_TYPES.READ),
     vehicleController.list
   );
 

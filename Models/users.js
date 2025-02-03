@@ -6,7 +6,7 @@ const {
   otps: otpSchema,
   roles: roleSchema,
   cities: citySchema,
-  states: stateSchema
+  states: stateSchema,
 } = require("../Database/Schema");
 const bcrypt = require("bcrypt");
 const { generateOtp } = require("../Utils/helper");
@@ -93,7 +93,7 @@ class userModel {
   }
 
   // Sign In
-  async signIn(bodyData) {    
+  async signIn(bodyData) {
     let currentTime = new Date();
 
     var checkUser;
@@ -174,6 +174,7 @@ class userModel {
 
     return {
       status: STATUS_CODES.SUCCESS,
+      token: access_token,
     };
   }
 
@@ -183,18 +184,20 @@ class userModel {
       where: {
         id: userInfo?.id,
       },
-      include: [{
-        model: roleSchema,
-        attributes: ['name']
-      },
-      {
-        model: citySchema,
-        attributes: ['name']
-      },
-      {
-        model: stateSchema,
-        attributes: ['name']
-      }]
+      include: [
+        {
+          model: roleSchema,
+          attributes: ["name"],
+        },
+        {
+          model: citySchema,
+          attributes: ["name"],
+        },
+        {
+          model: stateSchema,
+          attributes: ["name"],
+        },
+      ],
     });
   }
 
@@ -431,7 +434,7 @@ class userModel {
       where: {
         username,
         is_delete: false,
-        status: STATUS.ACTIVE
+        status: STATUS.ACTIVE,
       },
     });
 
@@ -442,6 +445,27 @@ class userModel {
     }
 
     return findUser;
+  }
+
+  // logout
+  async logOut(bodyData) {
+    let response = await userTokenSchema.findOne({
+      where: {
+        access_token: bodyData?.token,
+      },
+    });
+
+    if (!response) {
+      return {
+        status: STATUS_CODES.NOT_FOUND,
+      };
+    }
+
+    return await userTokenSchema.destroy({
+      where: {
+        access_token: bodyData?.token,
+      },
+    });
   }
 }
 

@@ -55,4 +55,6 @@ router.route("/reset_password_token").post(userController.resetPasswordByToken);
 
 router.route("/:username").get(userController.findUserByUsername);
 
+router.route("/logout").post(userController.logOut);
+
 module.exports = router;

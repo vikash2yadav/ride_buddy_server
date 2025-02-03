@@ -35,7 +35,7 @@ router
 router
   .route("/list")
   .post(
-    Authentication?.checkAccess(MODULES.BRANDS, ACCESS_TYPES.READ),
+    // Authentication?.checkAccess(MODULES.BRANDS, ACCESS_TYPES.READ),
     brandController.list
   );
 

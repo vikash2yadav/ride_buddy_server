@@ -113,8 +113,8 @@ class userController {
     res.handler.success(response, STATUS_MESSAGES.PASSWORD.CHANGED);
   }
 
-  // send token 
-  async sendToken(req, res){
+  // send token
+  async sendToken(req, res) {
     let response = await userModel.sendToken(req?.body);
 
     if (response.status === STATUS_CODES.NOT_FOUND) {
@@ -140,14 +140,28 @@ class userController {
   }
 
   // find user by id
-  async findUserByUsername(req, res){
+  async findUserByUsername(req, res) {
     let response = await userModel.findUserByUsername(req?.params);
 
     if (response.status === STATUS_CODES.NOT_FOUND) {
-      return res.handler.notFound(undefined, STATUS_MESSAGES.NOT_FOUND.USERNAME);
+      return res.handler.notFound(
+        undefined,
+        STATUS_MESSAGES.NOT_FOUND.USERNAME
+      );
     }
 
     res.handler.success(response);
+  }
+
+  // logout
+  async logOut(req, res) {
+    let response = await userModel.logOut(req?.body);
+
+    if (response.status === STATUS_CODES.NOT_FOUND) {
+      return res.handler.notFound(undefined, STATUS_MESSAGES.NOT_FOUND.TOKEN);
+    }
+
+    res.handler.success(response, STATUS_MESSAGES.USER.LOGOUT);
   }
 }
 

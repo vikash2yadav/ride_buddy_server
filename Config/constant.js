@@ -81,8 +81,8 @@ exports.STATUS_MESSAGES = {
     PROMO_CODE: "Promo code not found!",
     FAVOURITE: "Favourite not found!",
     PERMISSION: "Sorry, We can`t found permission, please try again!.",
-    CITY: 'City not found!'
-
+    CITY: "City not found!",
+    PARTNER_REQUEST: 'Partner request not found!'
   },
   PASSWORD: {
     MISMATCH: "Provided password do not match",
@@ -121,6 +121,7 @@ exports.STATUS_MESSAGES = {
   USER: {
     REGISTERED: "User registered successfully",
     LOGIN: "User Login successfully",
+    LOGOUT: "User Logout successfully",
     DELETED: "User has been deleted successfully.",
     UPDATED: "User has been updated successfully.",
     NOW_ACTIVE: "Your Account is now Active",
@@ -195,6 +196,11 @@ exports.STATUS_MESSAGES = {
     UPDATED: "City Updated!",
     DELETED: "City Deleted!",
   },
+  PARTNER_REQUEST: {
+    ADDED: "Added to partner request!",
+    UPDATED: "Updated to partner request!",
+    DELETED: "Deleted to partner request!",
+  },
   VALIDATION: {
     REQUIRED: {
       PASSWORD: "Please enter password.",
@@ -259,19 +265,19 @@ exports.MODULES = {
   FAVOURITES: 10,
   PROMO_CODE: 11,
   REVIEWS: 12,
-  CITY: 13
+  CITY: 13,
+  PARTNER_REQUEST: 14,
 };
 
 exports.ACCESS_TYPES = {
-  READ: 'read_access',
-  CREATE: 'create_access',
-  UPDATE: 'update_access',
-  DELETE: 'delete_access'
-}
-
+  READ: "read_access",
+  CREATE: "create_access",
+  UPDATE: "update_access",
+  DELETE: "delete_access",
+};
 
 exports.IMAGE_PATHS = {
-  BRAND: process.env.FRONTEND_IMAGE_PATH + 'brands/',
-  LOCATION: process.env.FRONTEND_IMAGE_PATH + 'locations/',
-  VEHICLE: process.env.FRONTEND_IMAGE_PATH + 'vehicles/'
-}
+  BRAND: process.env.FRONTEND_IMAGE_PATH + "brands/",
+  LOCATION: process.env.FRONTEND_IMAGE_PATH + "locations/",
+  VEHICLE: process.env.FRONTEND_IMAGE_PATH + "vehicles/",
+};

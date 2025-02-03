@@ -1,28 +1,20 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class cities extends Model {
+  class partner_requests extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      cities.hasMany(models.users, {
-        foreignKey: "city_id",
-        onDelete: "cascade",
-      });
-      cities.belongsTo(models.states, {
-        foreignKey: "state_id",
-        onDelete: "cascade",
-      });
-      cities.hasMany(models.partner_requests, {
+      partner_requests.belongsTo(models.cities, {
         foreignKey: "dealership_city_id",
-        onDelete: 'cascade'
+        onDelete: "cascade",
       });
     }
   }
-  cities.init(
+  partner_requests.init(
     {
       id: {
         allowNull: false,
@@ -30,27 +22,30 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.BIGINT(20).UNSIGNED,
       },
-      icon: {
-        allowNull: true,
-        type: DataTypes.TEXT,
-      },
       name: {
         allowNull: false,
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING,
       },
-      imp: {
-        allowNull: true,
-        type: DataTypes.BOOLEAN,
+      dealership: {
+        allowNull: false,
+        type: DataTypes.STRING,
       },
-      state_id: {
+      phone: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      email: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      dealership_city_id: {
         allowNull: false,
         type: DataTypes.BIGINT(20).UNSIGNED,
-        references: { model: "states", key: "id" },
+        references: { model: "cities", key: "id" },
       },
-      status: {
-        allowNull: false,
-        type: DataTypes.ENUM("active", "inactive"),
-        defaultValue: "active",
+      comment: {
+        allowNull: true,
+        type: DataTypes.TEXT,
       },
       createdAt: {
         allowNull: false,
@@ -63,8 +58,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "cities",
+      modelName: "partner_requests",
     }
   );
-  return cities;
+  return partner_requests;
 };

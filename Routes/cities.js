@@ -42,7 +42,7 @@ router
 router
   .route("/imp/list")
   .get(
-    Authentication?.checkAccess(MODULES.CITY, ACCESS_TYPES.READ),
+    // Authentication?.checkAccess(MODULES.CITY, ACCESS_TYPES.READ),
     cityController.impList
   );
 
