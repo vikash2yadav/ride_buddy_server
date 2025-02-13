@@ -35,7 +35,7 @@ router
 router
   .route("/list")
   .post(
-    Authentication?.checkAccess(MODULES.CITY, ACCESS_TYPES.READ),
+    // Authentication?.checkAccess(MODULES.CITY, ACCESS_TYPES.READ),
     cityController.list
   );
 

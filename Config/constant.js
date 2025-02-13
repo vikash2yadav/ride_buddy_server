@@ -82,7 +82,8 @@ exports.STATUS_MESSAGES = {
     FAVOURITE: "Favourite not found!",
     PERMISSION: "Sorry, We can`t found permission, please try again!.",
     CITY: "City not found!",
-    PARTNER_REQUEST: 'Partner request not found!'
+    PARTNER_REQUEST: 'Partner request not found!',
+    STATE: "State not found!"
   },
   PASSWORD: {
     MISMATCH: "Provided password do not match",
@@ -196,6 +197,11 @@ exports.STATUS_MESSAGES = {
     UPDATED: "City Updated!",
     DELETED: "City Deleted!",
   },
+  STATE: {
+    ADDED: "State Added!",
+    UPDATED: "State Updated!",
+    DELETED: "State Deleted!",
+  },
   PARTNER_REQUEST: {
     ADDED: "Added to partner request!",
     UPDATED: "Updated to partner request!",
@@ -267,6 +273,7 @@ exports.MODULES = {
   REVIEWS: 12,
   CITY: 13,
   PARTNER_REQUEST: 14,
+  STATE: 15,
 };
 
 exports.ACCESS_TYPES = {

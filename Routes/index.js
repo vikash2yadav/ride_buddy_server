@@ -13,6 +13,7 @@ const moduleRoutes = require("./modules");
 const promoCodeRoutes = require("./promo_codes");
 const favouriteRoutes = require("./favourites");
 const cityRoutes = require("./cities");
+const stateRoutes = require("./states");
 const partnerRequestRoutes = require("./partner_requests");
 
 const router = express.Router();
@@ -31,6 +32,7 @@ router.use("/module", moduleRoutes);
 router.use("/promo_code", promoCodeRoutes);
 router.use("/favourite", favouriteRoutes);
 router.use("/city", cityRoutes);
+router.use("/state", stateRoutes);
 router.use("/partner_request", partnerRequestRoutes);
 
 module.exports = router;
