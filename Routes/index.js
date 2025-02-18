@@ -15,6 +15,7 @@ const favouriteRoutes = require("./favourites");
 const cityRoutes = require("./cities");
 const stateRoutes = require("./states");
 const partnerRequestRoutes = require("./partner_requests");
+const utilRoutes = require("./utils");
 
 const router = express.Router();
 
@@ -34,5 +35,6 @@ router.use("/favourite", favouriteRoutes);
 router.use("/city", cityRoutes);
 router.use("/state", stateRoutes);
 router.use("/partner_request", partnerRequestRoutes);
+router.use("/util", utilRoutes);
 
 module.exports = router;

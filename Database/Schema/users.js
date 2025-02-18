@@ -1,6 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
-const { ROLES } = require("../../Config/constant");
+const { ROLES, IMAGE_PATHS } = require("../../Config/constant");
 module.exports = (sequelize, DataTypes) => {
   class users extends Model {
     /**
@@ -59,8 +59,8 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "cascade",
       });
       users.hasMany(models.favourites, {
-        foreignKey: 'user_id',
-        onDelete: 'cascade'
+        foreignKey: "user_id",
+        onDelete: "cascade",
       });
     }
   }
@@ -138,11 +138,18 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.BIGINT(20).UNSIGNED,
         references: { model: "roles", key: "id" },
-        defaultValue: ROLES.CUSTOMER
+        defaultValue: ROLES.CUSTOMER,
       },
       profile: {
         allowNull: true,
         type: DataTypes.TEXT,
+        get() {
+          return this.getDataValue("profile")
+            ? IMAGE_PATHS.USER +
+                "/" +
+                this.getDataValue("profile")
+            : null;
+        },
       },
       license_number: {
         allowNull: true,
@@ -163,7 +170,7 @@ module.exports = (sequelize, DataTypes) => {
       phone_code: {
         allowNull: false,
         type: DataTypes.STRING(20),
-        defaultValue: '91'
+        defaultValue: "91",
       },
       phone: {
         allowNull: false,

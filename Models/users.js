@@ -174,6 +174,7 @@ class userModel {
 
     return {
       status: STATUS_CODES.SUCCESS,
+      profile: checkUser?.profile,
       token: access_token,
     };
   }
