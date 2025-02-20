@@ -204,6 +204,8 @@ class userModel {
 
   // update profile
   async update(userInfo, bodyData) {
+    console.log(bodyData);
+    
     let response = await userSchema.update(bodyData, {
       where: {
         id: userInfo?.id,

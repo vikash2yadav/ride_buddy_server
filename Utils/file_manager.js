@@ -28,7 +28,7 @@ class FileManager {
     const basePath = path.resolve(utilPath, ".."); // Navigate to the parent directory
 
     // Remove leading '/' if it exists in the filepath to treat it as a relative path
-    if (filepath.startsWith("/")) {
+    if (filepath?.startsWith("/")) {
       filepath = filepath.substring(1);
     }
 

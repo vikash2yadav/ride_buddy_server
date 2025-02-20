@@ -6,7 +6,6 @@ class utilsController {
   // Upload multiple image
   async uploadMultipleImage(req, res) {
     try {
-      console.log(req?.body?.folderName);
       let imageMeta = await FileManager.getImageMetaData(
         req?.body?.file,
         req?.body?.folderName
@@ -29,14 +28,15 @@ class utilsController {
 
   // Upload single image
   async uploadSingleImage(req, res) {
+    
     try {
       let imageMeta = await FileManager.getImageMetaData(
-        req?.body?.newImage,
+        req?.body?.file,
         req?.body?.folderName
       );
-
+      
       let urlData = await utilsModel.uploadSingleImage(req?.body, req?.file);
-
+      
       let data = { ...urlData, ...imageMeta };
 
       res.handler.success(data);

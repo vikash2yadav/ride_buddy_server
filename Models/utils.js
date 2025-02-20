@@ -20,20 +20,20 @@ class utilsModel {
 
   // Upload single image
   async uploadSingleImage(bodyData, files) {
-    console.log(bodyData);
     let imageCount = "single";
+    
     let imagePath = FileManager.createLiveImageURL(
       files,
       bodyData?.folderName,
       imageCount
     );
-
+    
     if (Boolean(bodyData?.oldImage)) {
       let utilPath = __dirname.split("\\");
       utilPath.pop(utilPath?.length - 1);
       let oldImage =
         utilPath.join("/") +
-        "/Assets/images" +
+        "/Assets/" +
         bodyData?.folderName +
         "/" +
         bodyData?.oldImage;
