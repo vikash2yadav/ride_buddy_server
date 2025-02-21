@@ -11,7 +11,10 @@ const {
   feature_types: featureTypeSchema,
   features: featuresSchema,
   reviews: reviewsSchema,
-  categories: categorySchema
+  categories: categorySchema,
+  vehicle_durations: vehicleDurationSchema,
+  duration_types: durationTypeSchema,
+  duration_values: durationValueSchema
 } = require("../Database/Schema");
 
 class vehicleModel {
@@ -94,11 +97,11 @@ class vehicleModel {
 
   // get
   async get(params) {
-    const { id } = params;
+    const { id } = params;    
 
     let data = await vehicleSchema.findOne({
       where: {
-        id: id,
+        id,
         is_delete: false,
       },
       include: [
@@ -141,6 +144,20 @@ class vehicleModel {
             attributes: ["fullName"],
           },
         },
+        {
+          model: vehicleDurationSchema,
+          attributes: ["vehicle_id", "date", "status"],
+          include: [
+            {
+              model: durationTypeSchema,
+              attributes: ["name", "status", "id"],
+            },
+            {
+              model: durationValueSchema,
+              attributes: ["name", "status", "id"],
+            }
+          ]
+        },
       ],
     });
 
@@ -150,6 +167,8 @@ class vehicleModel {
       };
     }
 
+    console.log(data);
+    
     return data;
   }
 

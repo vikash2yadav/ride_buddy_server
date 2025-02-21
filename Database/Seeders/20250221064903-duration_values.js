@@ -1,0 +1,181 @@
+"use strict";
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.bulkInsert("duration_values", [
+      {
+        name: "12:00 - 01:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "01:00 - 02:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "02:00 - 03:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "03:00 - 04:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "04:00 - 05:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "05:00 - 06:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "06:00 - 07:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "07:00 - 08:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "08:00 - 09:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "09:00 - 10:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "10:00 - 11:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "11:00 - 12:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "12:00 - 13:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "13:00 - 14:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "14:00 - 15:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "15:00 - 16:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "16:00 - 17:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "17:00 - 18:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "18:00 - 19:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "19:00 - 20:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "20:00 - 21:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "21:00 - 22:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "22:00 - 23:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "23:00 - 24:00",
+        status: "active",
+        is_delete: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+  },
+
+  async down(queryInterface, Sequelize) {
+    return await queryInterface.bulkDelete("duration_values", null, {});
+  },
+};

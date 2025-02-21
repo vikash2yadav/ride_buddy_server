@@ -16,6 +16,8 @@ const cityRoutes = require("./cities");
 const stateRoutes = require("./states");
 const partnerRequestRoutes = require("./partner_requests");
 const utilRoutes = require("./utils");
+const durationTypeRoutes = require("./durationTypes");
+const durationValueRoutes = require("./durationValues");
 
 const router = express.Router();
 
@@ -36,5 +38,7 @@ router.use("/city", cityRoutes);
 router.use("/state", stateRoutes);
 router.use("/partner_request", partnerRequestRoutes);
 router.use("/util", utilRoutes);
+router.use("/duration_type", durationTypeRoutes);
+router.use("/duration_value", durationValueRoutes);
 
 module.exports = router;

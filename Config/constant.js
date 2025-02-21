@@ -83,7 +83,9 @@ exports.STATUS_MESSAGES = {
     PERMISSION: "Sorry, We can`t found permission, please try again!.",
     CITY: "City not found!",
     PARTNER_REQUEST: 'Partner request not found!',
-    STATE: "State not found!"
+    STATE: "State not found!",
+    DURATION_TYPE: "Duration Type not found!",
+    DURATION_VALUE: "Duration Value not found!"
   },
   PASSWORD: {
     MISMATCH: "Provided password do not match",
@@ -207,6 +209,16 @@ exports.STATUS_MESSAGES = {
     UPDATED: "Updated to partner request!",
     DELETED: "Deleted to partner request!",
   },
+  DURATION_TYPE: {
+    ADDED: "Duration Type Added Successfully!",
+    UPDATED: "Duration Type Updated Successfully!",
+    DELETED: "Duration Type Deleted Successfully!",
+  },
+  DURATION_VALUE: {
+    ADDED: "Duration Value Added Successfully!",
+    UPDATED: "Duration Value Updated Successfully!",
+    DELETED: "Duration Value Deleted Successfully!",
+  },
   VALIDATION: {
     REQUIRED: {
       PASSWORD: "Please enter password.",
@@ -274,6 +286,8 @@ exports.MODULES = {
   CITY: 13,
   PARTNER_REQUEST: 14,
   STATE: 15,
+  DURATION_TYPE: 16,
+  DURATION_VALUE: 17
 };
 
 exports.ACCESS_TYPES = {
