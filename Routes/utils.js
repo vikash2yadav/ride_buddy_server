@@ -22,4 +22,7 @@ router
 // Remove image
 router.route("/remove/image").post(utilsController.removeImage);
 
+// Global Search
+router.route('/global_search').post(utilsController.globalSearch);
+
 module.exports = router;

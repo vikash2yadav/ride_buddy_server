@@ -28,15 +28,14 @@ class utilsController {
 
   // Upload single image
   async uploadSingleImage(req, res) {
-    
     try {
       let imageMeta = await FileManager.getImageMetaData(
         req?.body?.file,
         req?.body?.folderName
       );
-      
+
       let urlData = await utilsModel.uploadSingleImage(req?.body, req?.file);
-      
+
       let data = { ...urlData, ...imageMeta };
 
       res.handler.success(data);
@@ -51,6 +50,17 @@ class utilsController {
       let data = await utilsModel.removeImage(req?.body);
 
       res.handler.success(data, STATUS_MESSAGES.IMAGE_REMOVED);
+    } catch (error) {
+      res.handler.serverError(error);
+    }
+  }
+
+  // Global Search
+  async globalSearch(req, res) {
+    try {
+      let data = await utilsModel.globalSearch(req?.body);
+
+      res.handler.success(data);
     } catch (error) {
       res.handler.serverError(error);
     }
